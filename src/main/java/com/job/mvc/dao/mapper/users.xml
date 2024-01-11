@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">
+	<resultMap type="User" id="userBase">
+		<id column="user_id" property="id"></id>
+	</resultMap>
+	
+	<select id="findByUsername" parameterType="String" resultMap="userBase">
+		SELECT * FROM users u WHERE u.username = #{username}
+	</select>
+	
+	<select id="findById" parameterType="long" resultMap="userBase">
+		SELECT * FROM users u WHERE u.user_id = #{id}
+	</select>
+	
+	<insert id="save" parameterType="User">
+		<selectKey resultType="long" keyProperty="id" order="BEFORE">
+        	SELECT USER_SEQ.nextval FROM dual
+    	</selectKey>
+    	
+		INSERT INTO users (
+			user_id, 
+			username, 
+			password, 
+			email
+		) VALUES (
+			#{id}, #{username}, #{password}, #{email}
+			)
+	</insert>
+</mapper>
