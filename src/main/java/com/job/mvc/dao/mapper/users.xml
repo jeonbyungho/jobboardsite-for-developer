@@ -3,6 +3,7 @@
 <mapper namespace="UserMapper">
 	<resultMap type="User" id="userBase">
 		<id column="user_id" property="id"></id>
+		<result column="created_date" property="createdDate" typeHandler="org.apache.ibatis.type.LocalDateTimeTypeHandler"/>
 	</resultMap>
 	
 	<select id="findByUsername" parameterType="String" resultMap="userBase">

@@ -21,13 +21,6 @@ public abstract class AbstractFrontController extends HttpServlet{
 	}
 	
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) 
-			throws ServletException, IOException {
-		System.out.println(req.getRequestURI());
-		super.service(req, resp);
-	}
-	
-	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		doProcess(req, resp, getControllerMap);
