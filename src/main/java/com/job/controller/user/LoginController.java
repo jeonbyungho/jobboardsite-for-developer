@@ -1,4 +1,4 @@
-package com.job.user;
+package com.job.controller.user;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -7,7 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.job.mvc.controller.Controller;
+import com.job.controller.Controller;
+import com.job.mybatis.dao.UserDAO;
+import com.job.mybatis.vo.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,10 +22,10 @@ public class LoginController implements Controller{
 		String username = req.getParameter("username");
 		if (username == null) username = "";
 		
-		Optional<User> optUser = dao.findByUsername(username);
+		Optional<UserVO> optUser = dao.findByUsername(username);
 		
 		if (optUser.isPresent()) {
-			User user = optUser.get();
+			UserVO user = optUser.get();
 			log.info(user.toString());
 		} else {
 			log.info("존재하지 않는 이름");

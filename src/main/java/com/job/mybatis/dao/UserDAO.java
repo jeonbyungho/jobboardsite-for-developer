@@ -1,14 +1,14 @@
-package com.job.user;
+package com.job.mybatis.dao;
 
 import java.util.Optional;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.job.mvc.dao.CuidDAO;
-import com.job.mvc.dao.SqlMapConfig;
+import com.job.mybatis.SqlMapConfig;
+import com.job.mybatis.vo.UserVO;
 
-public class UserDAO implements CuidDAO<User, Long>{
+public class UserDAO implements CuidDAO<UserVO, Long>{
 	
 	private static SqlSessionFactory sqlSessionFactory = SqlMapConfig.getInstance();
 	private static UserDAO instance = new UserDAO();
@@ -19,11 +19,11 @@ public class UserDAO implements CuidDAO<User, Long>{
 		return instance;
 	}
 	
-	public Optional<User> findByUsername(String username) {
-		Optional<User> optUser = Optional.empty();
+	public Optional<UserVO> findByUsername(String username) {
+		Optional<UserVO> optUser = Optional.empty();
 		
 		try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-			User findUser = sqlSession.selectOne("UserMapper.findByUsername", username);
+			UserVO findUser = sqlSession.selectOne("UserMapper.findByUsername", username);
 			optUser = Optional.ofNullable(findUser);
 			sqlSession.commit();
 		} catch (Exception e) {
@@ -34,7 +34,7 @@ public class UserDAO implements CuidDAO<User, Long>{
 	}
 
 	@Override
-	public int save(User obj) {
+	public int save(UserVO obj) {
 		int result = 0;
 		try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
 			result = sqlSession.insert("UserMapper.save", obj);
@@ -46,11 +46,11 @@ public class UserDAO implements CuidDAO<User, Long>{
 	}
 
 	@Override
-	public Optional<User> findById(Long primaryKey) {
-		Optional<User> optUser = Optional.empty();
+	public Optional<UserVO> findById(Long primaryKey) {
+		Optional<UserVO> optUser = Optional.empty();
 		
 		try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-			User findUser = sqlSession.selectOne("UserMapper.findById", primaryKey);
+			UserVO findUser = sqlSession.selectOne("UserMapper.findById", primaryKey);
 			optUser = Optional.ofNullable(findUser);
 			sqlSession.commit();
 		} catch (Exception e) {

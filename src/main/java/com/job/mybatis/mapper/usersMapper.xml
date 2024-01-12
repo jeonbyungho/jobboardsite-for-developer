@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="UserMapper">
-	<resultMap type="User" id="userBase">
+	<resultMap type="UserVO" id="userBase">
 		<id column="user_id" property="id"></id>
 		<result column="created_date" property="createdDate" typeHandler="org.apache.ibatis.type.LocalDateTimeTypeHandler"/>
 	</resultMap>
@@ -14,7 +14,7 @@
 		SELECT * FROM users u WHERE u.user_id = #{id}
 	</select>
 	
-	<insert id="save" parameterType="User">
+	<insert id="save" parameterType="UserVO">
 		<selectKey resultType="long" keyProperty="id" order="BEFORE">
         	SELECT USER_SEQ.nextval FROM dual
     	</selectKey>

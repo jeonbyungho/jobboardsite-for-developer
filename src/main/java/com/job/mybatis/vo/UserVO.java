@@ -1,4 +1,4 @@
-package com.job.user;
+package com.job.mybatis.vo;
 
 import java.time.LocalDateTime;
 
@@ -7,7 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Getter @Setter @ToString
-public class User {
+public class UserVO {
 	private long id;
 	private String username;
 	private String password;

@@ -1,4 +1,4 @@
-package com.job.mvc.controller;
+package com.job.controller;
 
 import java.io.IOException;
 

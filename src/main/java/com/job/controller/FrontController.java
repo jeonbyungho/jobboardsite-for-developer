@@ -1,12 +1,11 @@
-package com.job.mvc.controller;
+package com.job.controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 
-import com.job.jobpost.JobPostDetailController;
-import com.job.jobpost.JobPostListController;
-import com.job.user.LoginController;
-import com.job.welcome.WelcomeController;
+import com.job.controller.jobpost.*;
+import com.job.controller.user.LoginController;
+import com.job.controller.welcome.WelcomeController;
 
 @WebServlet(urlPatterns = "/")
 public class FrontController extends AbstractFrontController{
@@ -23,5 +22,7 @@ public class FrontController extends AbstractFrontController{
 		getControllerMap.put("/jobpost/list", jobPostList);
 		
 		getControllerMap.put("/jobpost/detail/", new JobPostDetailController());
+		
+		getControllerMap.put("/jobpost/wirte", new JobPostingController());
 	}
 }

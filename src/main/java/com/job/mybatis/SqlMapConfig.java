@@ -1,4 +1,4 @@
-package com.job.mvc.dao;
+package com.job.mybatis;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,12 +14,9 @@ public class SqlMapConfig {
 	private SqlMapConfig() {}
 	
 	static {
-		String resource = "com/job/mvc/dao/mybatis-config.xml";
-		InputStream inputStream = null;
-		try {
-			inputStream = Resources.getResourceAsStream(resource);
+		String resource = "com/job/mybatis/mybatis-config.xml";
+		try (InputStream inputStream = Resources.getResourceAsStream(resource)) {
 			instance = new SqlSessionFactoryBuilder().build(inputStream);
-			inputStream.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
