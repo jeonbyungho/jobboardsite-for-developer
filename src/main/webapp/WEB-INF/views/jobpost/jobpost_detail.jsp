@@ -4,7 +4,6 @@
 <html lang="ko">
 <head>
 	<%@ include file="../include/header.jsp" %>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css"></link>
 	<title>구인구직 상세 페이지</title>
 </head>
 <body>
@@ -12,8 +11,9 @@
 	
     <main class="container mt-3">
 		<div class="row g-5">
-		<!-- left -->
+		<!-- left 게시판 내용 -->
 			<div class="col-md-8">
+			<!-- 이미지 -->
 				<div id="carouselExampleIndicators" class="carousel slide mb-3">
 					  <div class="carousel-indicators">
 					    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -40,13 +40,15 @@
 					    <span class="visually-hidden">Next</span>
 					  </button>
 				</div>
+			<!-- 제목 -->
 				<h3 class="fw-bold">
 					<i class="bi bi-clipboard2"></i>
         			<span>프론트엔드 개발자(웹)</span>
       			</h3>
+      		<!-- 고용주 | 근무 지역 -->
       			<p class="blog-post-meta"><i class="bi bi-building-fill"></i> 회사명 | 서울.한국</p>
       			<hr>
-      			
+      		<!-- 내용 -->
       			<p>교육은 참 어렵습니다. 잘 가르치고, 잘 배우며, 잘 키우는 것은 결코 쉽지 않습니다. 
       				우리의 시간과 에너지가 유한하기 때문입니다. 맡은 학생 모두에게 좀 더 깊은 가르침을 줄 수 있고 학생 스스로 배우는 법을 깨우치도록 하는 기술, 
       				클래스팅은 모두가 한계 없이 배움에 연결되도록 현장을 이해하는 교육 기술을 연구합니다.</p>
@@ -83,9 +85,9 @@
       				<span class="badge bg-primary-subtle border border-primary-subtle text-primary-emphasis rounded-pill">Java</span>
       				<span class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill">JavaScript</span>
 			</div>
-		<!-- right -->
+		<!-- right 고용주 정보 -->
 			<div class="col-md-4">
-				<div class="position-sticky" style="top: 80px;">
+				<div class="position-sticky" style="top: 5rem;">
 					<div class="p-4 mb-3 border rounded">
 						<h5 class="fw-bold">채용 정보</h5>
 						

@@ -1,5 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/eclipse,java,maven
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,java,maven
+### DBeaver ###
+# ide config file
+.dbeaver/
+.dbeaver-data-sources*.xml
 
 ### Eclipse ###
 .metadata

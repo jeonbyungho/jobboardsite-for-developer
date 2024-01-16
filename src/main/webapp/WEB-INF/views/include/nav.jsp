@@ -25,14 +25,14 @@
         			<ul class="dropdown-menu">
         				<li><a class="dropdown-item" href="/jobpost/">jobpost</a></li>
         				<li><a class="dropdown-item" href="/jobpost/list">jobpost 목록</a></li>
-            			<li><a class="dropdown-item" href="#">Something else here</a></li>
+            			<li><a class="dropdown-item" href="/jobpost/wirte">구인구직 작성</a></li>
         			</ul>
         		</li>
       		</ul>
       		
       		<div class="d-flex">
     			<a class="btn btn-outline-primary me-2" type="button" href="/login">로그인</a>
-    			<a class="btn btn-outline-secondary" type="button" href="/login">회원가입</a>
+    			<a class="btn btn-outline-secondary" type="button" href="/join">회원가입</a>
     		</div>
     	</div>
     	

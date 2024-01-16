@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemberMapper">
+	<resultMap id="memberResultMap" type="MemberDto">
+		<id column="MEMBER_ID" property="id"></id>
+		<result column="CREATED_DATE" property="createdDate" typeHandler="org.apache.ibatis.type.LocalDateTimeTypeHandler"/>
+	</resultMap>
+	
+	<insert id="insert" parameterType="MemberDto">
+		<selectKey resultType="long" keyProperty="id" order="BEFORE">
+        	SELECT MEMBER_SEQ.nextval FROM dual
+    	</selectKey>
+    	INSERT INTO MEMBERS m (
+    		m.member_id, m.username, m.password, m.email
+		) VALUES (
+			#{id}, #{username}, #{password}, #{email}
+		)
+	</insert>
+	
+	<select id="findById"  parameterType="long" resultMap="memberResultMap">
+		SELECT * FROM MEMBERS m WHERE m.member_id = #{id}
+	</select>
+</mapper>

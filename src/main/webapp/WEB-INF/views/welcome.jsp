@@ -4,7 +4,6 @@
 <html lang="ko">
 <head>
 	<%@ include file="./include/header.jsp" %>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css"></link>
 	<title>홈페이지</title>
 </head>
 <body>
