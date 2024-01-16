@@ -18,8 +18,8 @@ public class LogFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
-		
 		HttpServletRequest httpReq = (HttpServletRequest) req;
+		httpReq.setCharacterEncoding("UTF-8");
 		String servletPath = httpReq.getServletPath();
 		log.info("ServletPath : {}", servletPath);
 		

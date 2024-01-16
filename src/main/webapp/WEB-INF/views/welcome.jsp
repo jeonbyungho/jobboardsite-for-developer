@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<%@ include file="./include/header.jsp" %>
-	<title>홈페이지</title>
+	<jsp:include page="./include/header.jsp">
+		<jsp:param name="title" value="메인"/>
+	</jsp:include>
 </head>
 <body>
 	<%@ include file="./include/nav.jsp" %>
