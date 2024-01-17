@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
 	<%@ include file="/WEB-INF/views/include/base/metaHead.jsp" %>
-	<title>메인</title>
+	<title>Index</title>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/include/base/navbar.jsp" %>

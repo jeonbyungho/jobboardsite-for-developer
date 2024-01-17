@@ -4,7 +4,8 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 
 import com.job.controller.jobpost.*;
-import com.job.controller.user.LoginController;
+import com.job.controller.member.JoinContorller;
+import com.job.controller.member.LoginController;
 import com.job.controller.welcome.WelcomeController;
 
 @WebServlet(urlPatterns = "/")
@@ -16,6 +17,7 @@ public class FrontController extends AbstractFrontController{
 		super.init();
 		getControllerMap.put("/", new WelcomeController());
 		getControllerMap.put("/login", new LoginController());
+		getControllerMap.put("/join", new JoinContorller());
 		
 		JobPostListController jobPostList = new JobPostListController();
 		getControllerMap.put("/jobpost/", jobPostList);

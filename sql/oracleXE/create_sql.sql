@@ -16,7 +16,7 @@ CREATE TABLE Employer (
 	member_id NUMBER,
 	name varchar(100) UNIQUE NOT NULL,
 	PRIMARY KEY (empl_id),
-	FOREIGN KEY (member_id) REFERENCES MEMBERS(member_id)
+	FOREIGN KEY (member_id) REFERENCES MEMBERS(member_id) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE Member_seq

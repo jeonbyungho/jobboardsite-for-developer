@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<nav class="navbar navbar-expand-md sticky-top bg-body border-bottom shadow-sm">
+<nav class="navbar navbar-expand-md sticky-top bg-body border-bottom shadow-sm mb-3">
 	<div class="container">
 	
 		<div class="navbar-brand">

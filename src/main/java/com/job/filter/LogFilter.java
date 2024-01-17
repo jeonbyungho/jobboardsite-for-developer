@@ -19,10 +19,8 @@ public class LogFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest httpReq = (HttpServletRequest) req;
-		httpReq.setCharacterEncoding("UTF-8");
 		String servletPath = httpReq.getServletPath();
 		log.info("ServletPath : {}", servletPath);
-		
 		chain.doFilter(req, resp);
 	}
 	
