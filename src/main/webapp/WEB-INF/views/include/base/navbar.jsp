@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.jobboard.web.controller.WebURLPattern" %>
 <nav class="navbar navbar-expand-md sticky-top bg-body border-bottom shadow-sm mb-3">
 	<div class="container">
 	
@@ -23,16 +24,15 @@
         				지역별
         			</a>
         			<ul class="dropdown-menu">
-        				<li><a class="dropdown-item" href="/jobpost/">jobpost</a></li>
-        				<li><a class="dropdown-item" href="/jobpost/list">jobpost 목록</a></li>
-            			<li><a class="dropdown-item" href="/jobpost/wirte">구인구직 작성</a></li>
+        				<li><a class="dropdown-item" href="<c:url value='${WebURLPattern.RECRUIT_POSTLIST }'/>">jobpost 목록</a></li>
+            			<li><a class="dropdown-item" href="<c:url value='${WebURLPattern.RECRUIT_POSTWRITE }'/>">구인구직 작성</a></li>
         			</ul>
         		</li>
       		</ul>
       		
       		<div class="d-flex">
-    			<a class="btn btn-outline-primary me-2" type="button" href="/login">로그인</a>
-    			<a class="btn btn-outline-secondary" type="button" href="/join">회원가입</a>
+    			<a class="btn btn-outline-primary me-2" type="button" href="<c:url value='${WebURLPattern.SIGNIN }'/>">로그인</a>
+    			<a class="btn btn-outline-secondary" type="button" href="<c:url value='${WebURLPattern.SIGNUP }'/>">회원가입</a>
     		</div>
     	</div>
     	
