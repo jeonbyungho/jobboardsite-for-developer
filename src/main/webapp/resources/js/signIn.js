@@ -1,6 +1,7 @@
 console.log("👤signUp");
 
 const formSignIn = document.getElementById("formSignIn");
+const urlParams = new URL(location.href).searchParams;
 
 formSignIn.onsubmit = async (event)=>{
 	event.preventDefault();
@@ -8,8 +9,6 @@ formSignIn.onsubmit = async (event)=>{
 	const result = await requestForm(form);
 	console.log(result);
 	if(result.success) {
-		alert("가입 성공");
-	} else {
-		alert("가입 실패");
+		location.href = location.origin + urlParams.get("redirect");
 	}
 };
