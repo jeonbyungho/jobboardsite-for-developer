@@ -1,9 +1,10 @@
 package com.jobboard.recruit.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
-@Getter @ToString
+@Getter @AllArgsConstructor @ToString
 public enum RecruitmentJob {
 		BACK_END ("백엔드")
 	,	FRONT_END ("프론트 엔드")
@@ -24,9 +25,5 @@ public enum RecruitmentJob {
 	,	WEB_PUBLISHING ("웹 퍼블리싱")
 		;
 	private String korean;
-	
-	RecruitmentJob(String korean) {
-		this.korean = korean;
-	}
 	
 }

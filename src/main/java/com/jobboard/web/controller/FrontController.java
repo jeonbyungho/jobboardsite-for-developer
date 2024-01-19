@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @WebServlet(name = "FrontControllerServlet", urlPatterns = {
-		"/", WebURLPattern.SIGNIN, WebURLPattern.SIGNUP
+		"/", WebURLPattern.SIGNIN, WebURLPattern.SIGNUP_EMPLOYER, WebURLPattern.SIGNUP_JOBSEEKER
 	,	WebURLPattern.RECRUIT_POSTLIST, WebURLPattern.RECRUIT_POSTDETAIL, WebURLPattern.RECRUIT_POSTWRITE
 	})
 public class FrontController extends HttpServlet {
@@ -30,7 +30,9 @@ public class FrontController extends HttpServlet {
 		controllerMap = new HashMap<String, Controller>();
 		controllerMap.put("/", new WelcomeContoller());
 		controllerMap.put(WebURLPattern.SIGNIN, new SignInContoller());
-		controllerMap.put(WebURLPattern.SIGNUP, new SignUpContoller());
+		Controller signUpContoller = new SignUpContoller();
+		controllerMap.put(WebURLPattern.SIGNUP_EMPLOYER, signUpContoller);
+		controllerMap.put(WebURLPattern.SIGNUP_JOBSEEKER, signUpContoller);
 		log.info("FrontController 생성");
 	}
 	

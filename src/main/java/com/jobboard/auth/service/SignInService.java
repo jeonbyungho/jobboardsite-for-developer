@@ -17,9 +17,10 @@ public class SignInService {
 		return instance;
 	}
 	
+	private final EmployerDao employerDao = EmployerDao.getInstance();
+	
 	public Optional<Employer> signIn(String username, String password){
-		EmployerDao emplDao = EmployerDao.getInstance();
-		Optional<Employer> optEmpl = emplDao.signIn(username, password);
+		Optional<Employer> optEmpl = employerDao.signIn(username, password);
 		return optEmpl;
 	}
 }

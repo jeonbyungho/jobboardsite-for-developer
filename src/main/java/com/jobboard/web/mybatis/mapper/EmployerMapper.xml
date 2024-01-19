@@ -50,20 +50,18 @@
 	WHERE m.username = #{username} AND m.password = #{password}
 </select>
 
-<!-- 회원 가입 --> 
-<insert id="signUp" parameterType="Employer">
-	<selectKey keyProperty="mb_id" resultType="int" order="BEFORE">
+<!-- 회원 가입 -->
+<insert id="signUp" parameterType="hashmap">
+	<selectKey keyProperty="id" resultType="int" order="BEFORE">
 		SELECT member_seq.nextval FROM dual
 	</selectKey>
-	
 	BEGIN
-	
 	INSERT INTO members m (
 		m.mb_id, m.username, m.password, m.email
 	) VALUES (
-		#{mb_id},
-		#{member.username}, #{member.password},
-		#{member.email}
+		#{id},
+		#{username}, #{password},
+		#{email}
 	);
 	
 	INSERT INTO employer e (
@@ -71,11 +69,10 @@
 		e.business_registration_number,e.company_name, 
 		e.founding_date
 	) VALUES (
-		employer_seq.nextval, #{mb_id},
+		employer_seq.nextval, #{id},
 		#{businessRegistrationNumber}, #{companyName},
 		#{foundingDate}
 	);
-	
 	END;
 </insert>
 

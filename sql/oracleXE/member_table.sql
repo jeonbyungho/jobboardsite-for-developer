@@ -6,6 +6,7 @@ CREATE TABLE members (
 	password varchar(255) NOT NULL,
 	email varchar(255),
 	created_at DATE DEFAULT sysdate
+	
 );
 
 COMMENT ON TABLE members IS '가입한 회원';

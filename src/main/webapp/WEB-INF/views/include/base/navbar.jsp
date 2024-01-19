@@ -32,7 +32,7 @@
       		
       		<div class="d-flex">
     			<a class="btn btn-outline-primary me-2" type="button" href="<c:url value='${WebURLPattern.SIGNIN }'/>">로그인</a>
-    			<a class="btn btn-outline-secondary" type="button" href="<c:url value='${WebURLPattern.SIGNUP }'/>">회원가입</a>
+    			<a class="btn btn-outline-secondary" type="button" href="<c:url value='${WebURLPattern.SIGNUP_EMPLOYER }'/>">회원가입</a>
     		</div>
     	</div>
     	

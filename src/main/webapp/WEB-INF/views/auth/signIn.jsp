@@ -9,7 +9,7 @@
 <body>
 <%@ include file="/WEB-INF/views/include/base/navbar.jsp" %>
 <main class="container">
-	<form method="post">
+	<form method="post" id="formSignIn">
 		<label for="inputUsername">아이디</label>
 		<input type="text" name="username" id="inputUsername"/>
 		
@@ -20,5 +20,6 @@
 	</form>
 </main>
 <%@ include file="/WEB-INF/views/include/base/footer.jsp" %>
+<script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/signIn.js'/>"></script>
 </body>
 </html>
