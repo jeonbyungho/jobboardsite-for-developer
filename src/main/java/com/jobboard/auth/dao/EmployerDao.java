@@ -51,4 +51,11 @@ public class EmployerDao implements AuthenticationDao<Employer>{
 		}
 		return -1;
 	}
+	
+	@Override
+	public int duplicateUsername(String username) {
+		try(SqlSession sqlSession = sqlSessionFactory.openSession()){
+			return sqlSession.selectOne(NAMESPACE + ".countByUsername", username);
+		}
+	}
 }

@@ -3,7 +3,6 @@ package com.jobboard.auth.service;
 import java.util.Map;
 
 import com.jobboard.auth.dao.EmployerDao;
-import com.jobboard.auth.domain.Employer;
 
 public class SignUpService {
 	private static SignUpService instance;
@@ -21,5 +20,10 @@ public class SignUpService {
 	
 	public int signUp(Map<String, Object> memberInfos){
 		return employerDao.signUp(memberInfos);
+	}
+	
+	public boolean duplicateUsername(String username) {
+		int count = employerDao.duplicateUsername(username);
+		return count > 0;
 	}
 }

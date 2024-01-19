@@ -12,13 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jobboard.auth.controller.SignInContoller;
 import com.jobboard.auth.controller.SignUpContoller;
+import com.jobboard.auth.controller.SignUpDuplicateCheckController;
 import com.jobboard.auth.controller.WelcomeContoller;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @WebServlet(name = "FrontControllerServlet", urlPatterns = {
-		"/", WebURLPattern.SIGNIN, WebURLPattern.SIGNUP_EMPLOYER, WebURLPattern.SIGNUP_JOBSEEKER
+		"/", WebURLPattern.SIGNIN, WebURLPattern.SIGNUP_EMPLOYER, WebURLPattern.SIGNUP_JOBSEEKER, WebURLPattern.SIGNUP_DUPLICATE
 	,	WebURLPattern.RECRUIT_POSTLIST, WebURLPattern.RECRUIT_POSTDETAIL, WebURLPattern.RECRUIT_POSTWRITE
 	})
 public class FrontController extends HttpServlet {
@@ -33,6 +34,7 @@ public class FrontController extends HttpServlet {
 		Controller signUpContoller = new SignUpContoller();
 		controllerMap.put(WebURLPattern.SIGNUP_EMPLOYER, signUpContoller);
 		controllerMap.put(WebURLPattern.SIGNUP_JOBSEEKER, signUpContoller);
+		controllerMap.put(WebURLPattern.SIGNUP_DUPLICATE, new SignUpDuplicateCheckController());
 		log.info("FrontController 생성");
 	}
 	

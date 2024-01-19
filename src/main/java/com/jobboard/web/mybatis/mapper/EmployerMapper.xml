@@ -16,23 +16,6 @@
 	</association>
 </resultMap>
 
-<!-- 유저 아이디 조회 -->
-<select id="findByUsername" parameterType="String" resultMap="employerResult">
-	SELECT 
-		e.empl_id  
-	,	e.business_registration_number  
-	,	e.company_name  
-	,	e.founding_date  
-	,	m.mb_id  
-	,	m.username  
-	,	m.password  
-	,	m.email  
-	,	m.created_at  
-	FROM employer e 
-		INNER JOIN members m ON e.mb_id = m.mb_id 
-	WHERE m.username = #{username}
-</select>
-
 <!-- 회원 인증 (로그인) -->
 <select id="signIn" parameterType="map" resultMap="employerResult">
 	SELECT 
@@ -48,6 +31,11 @@
 	FROM employer e 
 		INNER JOIN members m ON e.mb_id = m.mb_id 
 	WHERE m.username = #{username} AND m.password = #{password}
+</select>
+
+<!-- 아이디(사용자 이름) 개수 조회 -->
+<select id="countByUsername" parameterType="string" resultType="int">
+	select count(*) FROM members m where m.username = #{username}
 </select>
 
 <!-- 회원 가입 -->
