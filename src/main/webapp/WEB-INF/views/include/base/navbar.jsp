@@ -6,7 +6,7 @@
 	<div class="container">
 	
 		<div class="navbar-brand">
-			<a href="/"><i class="bi bi-layers-half">developer</i></a>
+			<a href="<c:url value='/'/>"><i class="bi bi-layers-half">developer</i></a>
 		</div>
 		
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="true" aria-label="Toggle navigation">
@@ -16,7 +16,7 @@
 		<div class="navbar-collapse collapse show" id="navbarCollapse">
       		<ul class="navbar-nav me-auto mb-2 mb-md-0">
       			<li class="nav-item">
-          			<a class="nav-link" href="/">Home</a>
+          			<a class="nav-link" href="<c:url value='/'/>">Home</a>
         		</li>
         		
         		<li class="nav-item dropdown">

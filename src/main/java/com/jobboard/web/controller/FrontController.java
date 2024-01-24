@@ -14,6 +14,9 @@ import com.jobboard.auth.controller.SignInContoller;
 import com.jobboard.auth.controller.SignUpContoller;
 import com.jobboard.auth.controller.SignUpDuplicateCheckController;
 import com.jobboard.auth.controller.WelcomeContoller;
+import com.jobboard.recruit.controller.RecruitBullContorller;
+import com.jobboard.recruit.controller.RecruitBullDetailContorller;
+import com.jobboard.recruit.controller.RecruitBullWriteContorller;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -35,6 +38,10 @@ public class FrontController extends HttpServlet {
 		controllerMap.put(WebURLPattern.SIGNUP_EMPLOYER, signUpContoller);
 		controllerMap.put(WebURLPattern.SIGNUP_JOBSEEKER, signUpContoller);
 		controllerMap.put(WebURLPattern.SIGNUP_DUPLICATE, new SignUpDuplicateCheckController());
+		
+		controllerMap.put(WebURLPattern.RECRUIT_POSTLIST, new RecruitBullContorller());
+		controllerMap.put(WebURLPattern.RECRUIT_POSTWRITE, new RecruitBullWriteContorller());
+		controllerMap.put(WebURLPattern.RECRUIT_POSTDETAIL, new RecruitBullDetailContorller());
 		log.info("FrontController 생성");
 	}
 	

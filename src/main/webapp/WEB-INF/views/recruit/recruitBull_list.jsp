@@ -15,7 +15,9 @@
     	</div>
     	
     <!-- 게시판 목록 -->
-    <c:import url="/WEB-INF/views/include/post/posts_card.jsp"></c:import>
+    <c:import url="/WEB-INF/views/include/post/posts_card.jsp">
+    	<c:param name="url" value="${WebURLPattern.RECRUIT_POSTDETAIL }"/>
+    </c:import>
     
 	<!-- 게시판 페이징 -->
 	<c:import url="/WEB-INF/views/include/post/pagination.jsp">

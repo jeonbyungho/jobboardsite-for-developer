@@ -8,11 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jobboard.web.controller.ControllerImpl;
 
-public class RecruitBullContorller extends ControllerImpl {
-
+public class RecruitBullDetailContorller extends ControllerImpl{
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		getJspForward(req, resp, "recruit/recruitBull_list");
+		getJspForward(req, resp, "recruit/recruitBull_detail");
 	}
-
 }

@@ -6,7 +6,7 @@
 	<c:forEach begin="1" end="16">
   		<div class="col">
 	    	<div class="card shadow-sm">
-	    		<a href="/jobpost/detail/" class="stretched-link"></a>
+	    		<a href="<c:url value='${param.url}'/>" class="stretched-link"></a>
 				<img src="https://source.unsplash.com/random/800x500" class="card-img-top" alt="...">
 				<div class="card-body">
 					<h5 class="card-title">Example Title</h5>
