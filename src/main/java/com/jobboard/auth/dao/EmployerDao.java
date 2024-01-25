@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.jobboard.auth.domain.Employer;
-import com.jobboard.web.mybatis.MybatisSessionFactory;
+import com.jobboard.web.dao.MybatisSessionFactory;
 
 public class EmployerDao implements AuthenticationDao<Employer>{
 	private static EmployerDao instance;

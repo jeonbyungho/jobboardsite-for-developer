@@ -19,6 +19,7 @@
 	</environments>
 	
 	<mappers>
-		<mapper resource="com/jobboard/web/mybatis/mapper/EmployerMapper.xml"/>
+		<mapper resource="mybatis/EmployerMapper.xml"/>
+		<mapper resource="mybatis/RecruitmentBulletinMapper.xml"/>
 	</mappers>
 </configuration>

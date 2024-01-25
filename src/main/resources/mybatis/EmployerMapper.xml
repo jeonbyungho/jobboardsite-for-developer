@@ -4,7 +4,7 @@
 
 <resultMap type="Employer" id="employerResult">
 	<id column="empl_id" property="id"/>
-	<result column="business_registration_number" property="businessRegistrationNumber"/>
+	<result column="business_number" property="businessNumber"/>
 	<result column="company_name"	property="companyName"/>
 	<result column="founding_date"	property="foundingDate" typeHandler="org.apache.ibatis.type.LocalDateTypeHandler"/>
 	<association property="member" javaType="Member">
@@ -20,7 +20,7 @@
 <select id="signIn" parameterType="map" resultMap="employerResult">
 	SELECT 
 		e.empl_id  
-	,	e.business_registration_number  
+	,	e.business_number  
 	,	e.company_name  
 	,	e.founding_date  
 	,	m.mb_id  
@@ -54,7 +54,7 @@
 	
 	INSERT INTO employer e (
 		e.empl_id, e.mb_id, 
-		e.business_registration_number,e.company_name, 
+		e.business_number, e.company_name, 
 		e.founding_date
 	) VALUES (
 		employer_seq.nextval, #{id},

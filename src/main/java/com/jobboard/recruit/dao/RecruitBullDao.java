@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.jobboard.recruit.domain.RecruitmentBulletin;
-import com.jobboard.web.mybatis.MybatisSessionFactory;
+import com.jobboard.web.dao.MybatisSessionFactory;
 
 public class RecruitBullDao {
 	private static RecruitBullDao instance;

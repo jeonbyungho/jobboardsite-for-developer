@@ -42,6 +42,6 @@
 </main>
 <%@ include file="/WEB-INF/views/include/base/footer.jsp" %>
 <script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/base.js'/>"></script>
-<script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/signUp.js'/>"></script>
+<script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/auth/signUp.js'/>"></script>
 </body>
 </html>

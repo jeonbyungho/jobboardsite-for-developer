@@ -21,6 +21,6 @@
 </main>
 <%@ include file="/WEB-INF/views/include/base/footer.jsp" %>
 <script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/base.js'/>"></script>
-<script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/signIn.js'/>"></script>
+<script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/auth/signIn.js'/>"></script>
 </body>
 </html>
