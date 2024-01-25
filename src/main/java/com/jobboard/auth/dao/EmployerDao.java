@@ -12,7 +12,6 @@ import com.jobboard.web.mybatis.MybatisSessionFactory;
 
 public class EmployerDao implements AuthenticationDao<Employer>{
 	private static EmployerDao instance;
-	private final static String NAMESPACE = "EmployerMapper";
 	
 	private EmployerDao() {}
 	
@@ -23,6 +22,7 @@ public class EmployerDao implements AuthenticationDao<Employer>{
 		return instance;
 	}
 	
+	private final String NAMESPACE = "EmployerMapper";
 	private final SqlSessionFactory sqlSessionFactory = MybatisSessionFactory.getInstance();
 	
 	@Override

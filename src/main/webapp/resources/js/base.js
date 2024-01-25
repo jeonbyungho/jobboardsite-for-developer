@@ -2,17 +2,29 @@
  * @param {HTMLElement} parameterForm
  * @param {String} req_method
  */
-async function requestForm(parameterForm, req_method="POST"){
-	const formData = new FormData(parameterForm);
-	const url = parameterForm.action;
+async function sendForm(form){
+	const formData = new FormData(form);
+	const url = form.action;
+	const contentType = form.enctype;
+	
+	let reqInit = {
+		method: form.method,
+	}
+	
+	if (contentType != "multipart/form-data"){
+		let headers = {
+			"Content-Type": contentType,
+		};
+		reqInit.headers = headers;
+		reqInit.body = new URLSearchParams(formData);
+	} else {
+		reqInit.body = formData;
+	}
+	
+	console.log(reqInit);
+	
 	try{
-		const resp = await fetch(url, {
-			method: req_method,
-			headers: {
-				"Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
-			},
-			body: new URLSearchParams(formData),
-		});
+		const resp = await fetch(url, reqInit);
 		if (!resp.ok){
 			throw new Error("서버로부터 정상적인 응답을 받지 못했습니다.");
 		}
@@ -27,13 +39,14 @@ async function requestForm(parameterForm, req_method="POST"){
  * @param {Object} data 
  * @param {String} url 
  * @param {String} req_method 
+ * @param {String} contentType 
  */
-async function requestData(data, url, req_method="GET"){
+async function sendData(data, url, reqMethod="GET", contentType="application/x-www-form-urlencoded"){
 	try{
 		const resp = await fetch(url, {
-			method: req_method,
+			method: reqMethod,
 			headers: {
-				"Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+				"Content-Type": contentType,
 			},
 			body: new URLSearchParams(data),
 		});

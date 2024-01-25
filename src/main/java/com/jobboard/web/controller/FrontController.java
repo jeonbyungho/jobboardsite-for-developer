@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +26,10 @@ import lombok.extern.slf4j.Slf4j;
 		"/", WebURLPattern.SIGNIN, WebURLPattern.SIGNUP_EMPLOYER, WebURLPattern.SIGNUP_JOBSEEKER, WebURLPattern.SIGNUP_DUPLICATE
 	,	WebURLPattern.RECRUIT_POSTLIST, WebURLPattern.RECRUIT_POSTDETAIL, WebURLPattern.RECRUIT_POSTWRITE
 	})
+@MultipartConfig(fileSizeThreshold = 1024 * 1024
+	,	maxFileSize =  1024 * 1024 * 10
+	,	maxRequestSize = 1024 * 1024 * 15
+	)
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Map<String, Controller> controllerMap;

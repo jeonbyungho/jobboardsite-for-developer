@@ -22,6 +22,7 @@ public class RecruitmentBulletin {
 	private int minSalary, maxSalary;
 	private List<String> skills;
 	
-	private LocalDateTime createdAt;
-	private LocalDateTime modifiedAt;
+	private List<String> images;
+	
+	private LocalDateTime createdAt, modifiedAt;
 }

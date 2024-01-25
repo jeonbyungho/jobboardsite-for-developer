@@ -1,3 +1,4 @@
+drop TABLE recruitment_bulletin;
 -- 채용 게시판
 CREATE TABLE recruitment_bulletin (
 	recrui_id NUMBER PRIMARY KEY,
@@ -14,3 +15,10 @@ COMMENT ON TABLE RECRUITMENT_BULLETIN IS '채용 게시판';
 CREATE SEQUENCE recruit_bull_seq
 	START WITH 1
 	INCREMENT BY 1;
+
+CREATE TABLE recruitment_bulletin_images (
+	recrui_id NUMBER PRIMARY KEY,
+	path varchar(100) NOT NULL,
+	created_date DATE DEFAULT sysdate,
+	FOREIGN KEY (empl_id) REFERENCES recruitment_bulletin(recrui_id) ON DELETE CASCADE
+);
