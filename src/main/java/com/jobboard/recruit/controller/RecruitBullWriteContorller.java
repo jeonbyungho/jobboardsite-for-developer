@@ -1,8 +1,13 @@
 package com.jobboard.recruit.controller;
 
+import static org.junit.Assert.assertArrayEquals;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -34,13 +39,17 @@ public class RecruitBullWriteContorller extends ControllerImpl{
 		String content = req.getParameter("content");
 		writeService.write(title, content);
 		
-		Part imgPart =  req.getPart("image");
-		if (imgPart.getSize() > 0) {
-			String imgPath = req.getServletContext().getRealPath(WebURLPattern.RECRUIT_POST_IMAGEPATH) 
-					+ "/" + LocalDate.now().getYear()
-					+ "/" + LocalDate.now().getMonthValue()
-					+ "/" + LocalDate.now().getDayOfMonth();
-			writeService.storeImage(imgPart.getInputStream(), imgPath, imgPart.getSubmittedFileName());
+		String photoPath = req.getServletContext().getRealPath(WebURLPattern.RECRUIT_POST_IMAGEPATH) 
+				+ "/" + LocalDate.now().getYear()
+				+ "/" + LocalDate.now().getMonthValue()
+				+ "/" + LocalDate.now().getDayOfMonth();
+		
+		Iterator<Part> parts=req.getParts().iterator();
+		for(int count = 1;parts.hasNext(); count++) {
+			Part part = parts.next();
+			if(part.getName().equals("photos") && part.getContentType().equals("image/jpeg")) {
+				writeService.storePhoto(part.getInputStream(), photoPath, Integer.toString(count));
+			}
 		}
 		
 		PrintWriter out = resp.getWriter();

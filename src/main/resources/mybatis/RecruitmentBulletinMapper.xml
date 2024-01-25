@@ -2,4 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="RecruitmentBulletinMapper">
 
+<resultMap type="RecruitmentBulletin" id="RecruitBullResult">
+	<id column="recrui_id" property="id"/>
+	<id column="title" property="title"/>
+	<id column="content" property="content"/>
+	<id column="photo_path" property="photosPath"/>
+	
+	<result column="created_at"	 property="createdAt" typeHandler="org.apache.ibatis.type.LocalDateTimeTypeHandler"/>
+	<result column="modified_at" property="modifiedAt" typeHandler="org.apache.ibatis.type.LocalDateTimeTypeHandler"/>
+</resultMap>
+
+<!-- 게시판 작성 -->
+<insert id="insert" parameterType="RecruitmentBulletin">
+	insert into RECRUITMENT_BULLETIN rb (
+		rb.recrui_id
+	,	rb.title
+	,	rb.content
+	,	rb.photo_path
+	) values (
+			recruitbull_seq.nextval
+		,	${title}
+		,	${content}
+		,	${photosPath}
+	)
+</insert>
 </mapper>

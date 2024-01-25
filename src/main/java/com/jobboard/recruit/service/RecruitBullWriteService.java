@@ -20,14 +20,14 @@ public class RecruitBullWriteService {
 		return instance;
 	}
 	
-	public void storeImage(InputStream inputStream, String imgPath, String fileName) throws IOException {
-		log.info(imgPath);
-		File path = new File(imgPath);
+	public void storePhoto(InputStream inputStream, String photoPath, String fileName) throws IOException {
+		log.info(photoPath);
+		File path = new File(photoPath);
 		if (!path.exists()) {
 			path.mkdirs();
 			log.info("이미지 저장용 디렉토리 생성");
 		}
-		FileOutputStream outputStream = new FileOutputStream(path + "/" + fileName);
+		FileOutputStream outputStream = new FileOutputStream(path + "/" + fileName + ".jpeg");
 		int size = 0;
 		byte[] buf = new byte[1024];
 		while ((size = inputStream.read(buf)) != -1) {

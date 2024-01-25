@@ -27,8 +27,8 @@ import lombok.extern.slf4j.Slf4j;
 	,	WebURLPattern.RECRUIT_POSTLIST, WebURLPattern.RECRUIT_POSTDETAIL, WebURLPattern.RECRUIT_POSTWRITE
 	})
 @MultipartConfig(fileSizeThreshold = 1024 * 1024
-	,	maxFileSize =  1024 * 1024 * 10
-	,	maxRequestSize = 1024 * 1024 * 15
+	,	maxFileSize =  -1
+	,	maxRequestSize = -1
 	)
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

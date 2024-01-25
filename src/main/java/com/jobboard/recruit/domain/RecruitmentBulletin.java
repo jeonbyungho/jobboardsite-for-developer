@@ -22,7 +22,7 @@ public class RecruitmentBulletin {
 	private int minSalary, maxSalary;
 	private List<String> skills;
 	
-	private List<String> images;
+	private String photosPath;
 	
 	private LocalDateTime createdAt, modifiedAt;
 }

@@ -36,7 +36,8 @@
     				<i class="bi bi-images"></i> 이미지
     			</label>
    			</h4>
-	   		<input type="file" name="image" class="form-control" id="inputImage"/>
+	   		<input type="file" name="photos" class="form-control" id="inputImage" multiple/>
+	   		
    			<hr>
    		<!-- 내용 -->
    			<textarea name="content" class="form-control vh-100" id="jobpostTextareaContents"></textarea>

@@ -4,6 +4,7 @@
 	<typeAliases>
 		<typeAlias alias="Member" type="com.jobboard.auth.domain.Member"/>
 		<typeAlias alias="Employer" type="com.jobboard.auth.domain.Employer"/>
+		<typeAlias alias="RecruitmentBulletin" type="com.jobboard.recruit.domain.RecruitmentBulletin"/>
 	</typeAliases>
 	
 	<environments default="development">
