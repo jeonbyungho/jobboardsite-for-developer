@@ -4,6 +4,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
+
+import com.jobboard.recruit.dao.RecruitBullDao;
+import com.jobboard.recruit.domain.RecruitmentBulletin;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,24 +24,44 @@ public class RecruitBullWriteService {
 		return instance;
 	}
 	
-	public void storePhoto(InputStream inputStream, String photoPath, String fileName) throws IOException {
-		log.info(photoPath);
-		File path = new File(photoPath);
+	private final RecruitBullDao recruitBullDao = RecruitBullDao.getInstance();
+	
+	public int write(RecruitmentBulletin recruitBull) {
+		recruitBullDao.insert(recruitBull);
+		return -1;
+	}
+	
+	public int write(RecruitmentBulletin recruitBull, List<InputStream> photoInputStreams) {
+		String photosPath = recruitBull.getPhotosPath();
+		if(photosPath == null || photosPath.isBlank() || photoInputStreams.size() <= 0) {
+			return -1;
+		}
+		
+		// 이미지 디렉토리 생성
+		File path = new File(photosPath);
 		if (!path.exists()) {
 			path.mkdirs();
 			log.info("이미지 저장용 디렉토리 생성");
 		}
-		FileOutputStream outputStream = new FileOutputStream(path + "/" + fileName + ".jpeg");
-		int size = 0;
-		byte[] buf = new byte[1024];
-		while ((size = inputStream.read(buf)) != -1) {
-			outputStream.write(buf, 0, size);
+		
+		// 이미지 저장
+		try {
+			for(int i = 0; i < photoInputStreams.size(); i++) {
+				System.out.println(i);
+				InputStream inputStream = photoInputStreams.get(i);
+				FileOutputStream outputStream = new FileOutputStream(path + "/" + i + ".jpeg");
+				byte[] buf = new byte[1024];
+				int size;
+				while ((size = inputStream.read(buf)) != -1) {
+					outputStream.write(buf, 0, size);
+				}
+				outputStream.close();
+				inputStream.close();
+			}
+			return write(recruitBull);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		outputStream.close();
-		inputStream.close();
-	}
-	
-	public void write(String title, String content) {
-		log.info(title + "\n "+content);
+		return -1;
 	}
 }

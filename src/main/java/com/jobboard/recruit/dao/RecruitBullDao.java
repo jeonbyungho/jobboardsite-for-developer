@@ -30,7 +30,18 @@ public class RecruitBullDao {
 		}
 	}
 	
-	public int insert() {
+	public int insert(RecruitmentBulletin recruitBull) {
+		SqlSession sqlSession = null;
+		try {
+			sqlSession = sqlSessionFactory.openSession();
+			sqlSession.insert(NAMESPACE + ".insert", recruitBull);
+			sqlSession.commit();
+			return 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+			sqlSession.close();
+		}
 		return -1;
 	}
 }

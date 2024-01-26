@@ -1,8 +1,7 @@
 package com.jobboard.recruit.controller;
 
-import static org.junit.Assert.assertArrayEquals;
-
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,6 +15,7 @@ import javax.servlet.http.Part;
 
 import org.json.simple.JSONObject;
 
+import com.jobboard.recruit.domain.RecruitmentBulletin;
 import com.jobboard.recruit.service.RecruitBullWriteService;
 import com.jobboard.web.controller.ControllerImpl;
 import com.jobboard.web.controller.WebURLPattern;
@@ -35,21 +35,32 @@ public class RecruitBullWriteContorller extends ControllerImpl{
 	
 	@SuppressWarnings("unchecked")
 	private void recruitBullWrite(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		RecruitmentBulletin recruitBull = new RecruitmentBulletin();
+		req.setCharacterEncoding("UTF-8");
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-		writeService.write(title, content);
 		
-		String photoPath = req.getServletContext().getRealPath(WebURLPattern.RECRUIT_POST_IMAGEPATH) 
-				+ "/" + LocalDate.now().getYear()
-				+ "/" + LocalDate.now().getMonthValue()
-				+ "/" + LocalDate.now().getDayOfMonth();
+		recruitBull.setTitle(title);
+		recruitBull.setContent(content);
 		
-		Iterator<Part> parts=req.getParts().iterator();
-		for(int count = 1;parts.hasNext(); count++) {
+		List<InputStream> photoInputStreams = new ArrayList<InputStream>();
+		
+		for(Iterator<Part> parts = req.getParts().iterator(); parts.hasNext();) {
 			Part part = parts.next();
 			if(part.getName().equals("photos") && part.getContentType().equals("image/jpeg")) {
-				writeService.storePhoto(part.getInputStream(), photoPath, Integer.toString(count));
+				photoInputStreams.add(part.getInputStream());
 			}
+		}
+		
+		if(photoInputStreams.size() > 0) {
+			String photoPath = req.getServletContext().getRealPath(WebURLPattern.RECRUIT_POST_IMAGEPATH) 
+					+ "/" + LocalDate.now().getYear()
+					+ "/" + LocalDate.now().getMonthValue()
+					+ "/" + LocalDate.now().getDayOfMonth();
+			recruitBull.setPhotosPath(photoPath);
+			writeService.write(recruitBull, photoInputStreams);
+		} else {
+			writeService.write(recruitBull);
 		}
 		
 		PrintWriter out = resp.getWriter();

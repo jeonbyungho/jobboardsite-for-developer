@@ -20,10 +20,10 @@
 	,	rb.content
 	,	rb.photo_path
 	) values (
-			recruitbull_seq.nextval
-		,	${title}
-		,	${content}
-		,	${photosPath}
+		recruitbull_seq.nextval
+	,	#{title}
+	,	#{content}
+	,	#{photosPath}
 	)
 </insert>
 </mapper>
