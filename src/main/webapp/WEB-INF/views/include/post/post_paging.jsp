@@ -6,18 +6,18 @@
 	<%-- Prev 버튼 --%>
 		<c:if test="${param.startPagingCheck}">
 			<li class="page-item">
-				<a class="page-link" href="#"><i class="bi bi-caret-left-fill"></i></a>
+				<a class="page-link" href="${param.url}/${param.startPageNo - 1}"><i class="bi bi-caret-left-fill"></i></a>
 			</li>
 		</c:if>
 	<%-- Page 번호 --%>
 		<c:forEach var="pageNo" begin="${param.startPageNo}" end="${param.endPageNo}">
 			<c:set var="pageStatu" value="${pageNo == param.currentPageNo ? 'page-link active' : 'page-link' }" scope="page"/>
-			<li class="page-item"><a class="${pageStatu }" href="${param.url}">${pageNo}</a></li>
+			<li class="page-item"><a class="${pageStatu }" href="${param.url}/${pageNo}">${pageNo}</a></li>
 		</c:forEach>
 	<%-- Next 버튼 --%>
 		<c:if test="${param.endPagingCheck}">
 			<li class="page-item">
-				<a class="page-link" href="#"><i class="bi bi-caret-right-fill"></i></a>
+				<a class="page-link" href="${param.url}/${param.endPageNo + 1}"><i class="bi bi-caret-right-fill"></i></a>
 			</li>
 		</c:if>
 	</ul>

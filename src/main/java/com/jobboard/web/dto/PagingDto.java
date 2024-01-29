@@ -39,7 +39,8 @@ public class PagingDto {
 	}
 	
 	public boolean isNext() {
-		return currentPage + sizePage < getTotalPage();
+		int totalPage = getTotalPage();
+		return currentPage - 1 + (totalPage / countItemPerPage) < totalPage;
 	}
 	
 }

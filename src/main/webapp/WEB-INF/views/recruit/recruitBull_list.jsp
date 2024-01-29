@@ -26,7 +26,7 @@
 		<c:param name="currentPageNo" value="${pagingDto.currentPage }"/>
 		<c:param name="startPagingCheck" value="${pagingDto.prev }"/>
 		<c:param name="endPagingCheck" value="${pagingDto.next }"/>
-		<c:param name="url" value="#"/>
+		<c:param name="url" value="${WebURLPattern.RECRUIT_POSTLIST }"/>
 		<c:param name="tesr" value=""/>
 	</c:import>
 </main>
