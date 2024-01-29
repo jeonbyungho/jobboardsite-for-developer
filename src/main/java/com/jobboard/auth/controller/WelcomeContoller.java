@@ -12,7 +12,7 @@ public class WelcomeContoller extends ControllerImpl{
 	private final String viewPath = "welcome";
 	
 	@Override
-	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		getJspForward(req, resp, viewPath);
 	}
 }

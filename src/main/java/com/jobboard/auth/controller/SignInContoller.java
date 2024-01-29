@@ -16,22 +16,16 @@ import com.jobboard.auth.service.SignInService;
 import com.jobboard.web.controller.ControllerImpl;
 
 public class SignInContoller extends ControllerImpl{
-	private final String signInViewPath = "auth/signIn";
+	private final String viewPath = "auth/signIn";
 	private final SignInService signInService = SignInService.getInstance();
 	
 	@Override
-	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String method = req.getMethod();
-		if (METHOD_GET.equals(method)) {
-			getJspForward(req, resp, signInViewPath);
-		}
-		else if (METHOD_POST.equals(method)) {
-			signIn(req, resp);
-		}
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		getJspForward(req, resp, viewPath);
 	}
 	
-	@SuppressWarnings("unchecked")
-	private void signIn(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	@Override @SuppressWarnings("unchecked")
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		Optional<Employer> optEmpl = signInService.signIn(username, password);

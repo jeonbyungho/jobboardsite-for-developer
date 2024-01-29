@@ -15,16 +15,8 @@ import com.jobboard.web.controller.ControllerImpl;
 public class SignUpDuplicateCheckController extends ControllerImpl{
 	private final SignUpService signUpService = SignUpService.getInstance();
 	
-	@Override
-	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String method = req.getMethod();
-		if (METHOD_POST.equals(method)) {
-			duplicateUsername(req, resp);
-		}
-	}
-	
-	@SuppressWarnings("unchecked")
-	private void duplicateUsername(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	@Override @SuppressWarnings("unchecked")
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String username =req.getParameter("username");
 		boolean result = signUpService.duplicateUsername(username);
 		

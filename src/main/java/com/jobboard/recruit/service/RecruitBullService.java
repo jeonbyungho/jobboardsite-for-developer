@@ -5,6 +5,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Optional;
+
+import org.apache.ibatis.exceptions.PersistenceException;
 
 import com.jobboard.recruit.dao.RecruitBullDao;
 import com.jobboard.recruit.domain.RecruitmentBulletin;
@@ -12,14 +15,14 @@ import com.jobboard.recruit.domain.RecruitmentBulletin;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class RecruitBullWriteService {
-	private static RecruitBullWriteService instance;
+public class RecruitBullService {
+	private static RecruitBullService instance;
 	
-	private RecruitBullWriteService() {}
+	private RecruitBullService() {}
 	
-	public static RecruitBullWriteService getInstance() {
+	public static RecruitBullService getInstance() {
 		if(instance == null) {
-			instance = new RecruitBullWriteService();
+			instance = new RecruitBullService();
 		}
 		return instance;
 	}
@@ -63,5 +66,14 @@ public class RecruitBullWriteService {
 			e.printStackTrace();
 		}
 		return -1;
+	}
+	
+	public Optional<RecruitmentBulletin> getRecruiBull(Long pk){
+		try {
+			return recruitBullDao.findById(pk);
+		} catch (PersistenceException e) {
+			e.printStackTrace();
+		}
+		return Optional.empty();
 	}
 }

@@ -26,4 +26,17 @@
 	,	#{photosPath}
 	)
 </insert>
+
+<!-- 게시판 조회 -->
+<select id="findById" parameterType="Long" resultMap="RecruitBullResult">
+	select 	rb.RECRUI_ID 
+	,	rb.TITLE 
+	,	rb.CONTENT 
+	,	rb.PHOTO_PATH 
+	,	rb.CREATED_AT 
+	,	rb.MODIFIED_AT 
+	from RECRUITMENT_BULLETIN rb 
+	where rb.RECRUI_ID = #{pk}
+</select>
+
 </mapper>

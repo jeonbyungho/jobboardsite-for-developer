@@ -19,8 +19,7 @@ public class LogFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest httpReq = (HttpServletRequest) req;
-		String servletPath = httpReq.getServletPath();
-		log.info("ServletPath : {}", servletPath);
+		log.info("Servlet : {}, PathInfo: {}", httpReq.getServletPath(), httpReq.getPathInfo());
 		chain.doFilter(req, resp);
 	}
 	

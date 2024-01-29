@@ -16,25 +16,21 @@ import javax.servlet.http.Part;
 import org.json.simple.JSONObject;
 
 import com.jobboard.recruit.domain.RecruitmentBulletin;
-import com.jobboard.recruit.service.RecruitBullWriteService;
+import com.jobboard.recruit.service.RecruitBullService;
 import com.jobboard.web.controller.ControllerImpl;
 import com.jobboard.web.controller.WebURLPattern;
 
 public class RecruitBullWriteContorller extends ControllerImpl{
-	private final String signInViewPath = "recruit/recruitBull_form";
-	private final RecruitBullWriteService writeService = RecruitBullWriteService.getInstance();
+	private final String viewPath = "recruit/recruitBull_form";
+	private final RecruitBullService rbService = RecruitBullService.getInstance();
 	
 	@Override
-	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		if(METHOD_GET.equals(req.getMethod())) {
-			getJspForward(req, resp, signInViewPath);
-		} else if(METHOD_POST.equals(req.getMethod())) {
-			recruitBullWrite(req, resp);
-		}
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		getJspForward(req, resp, viewPath);
 	}
 	
-	@SuppressWarnings("unchecked")
-	private void recruitBullWrite(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+	@Override @SuppressWarnings("unchecked")
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		RecruitmentBulletin recruitBull = new RecruitmentBulletin();
 		req.setCharacterEncoding("UTF-8");
 		String title = req.getParameter("title");
@@ -58,9 +54,9 @@ public class RecruitBullWriteContorller extends ControllerImpl{
 					+ "/" + LocalDate.now().getMonthValue()
 					+ "/" + LocalDate.now().getDayOfMonth();
 			recruitBull.setPhotosPath(photoPath);
-			writeService.write(recruitBull, photoInputStreams);
+			rbService.write(recruitBull, photoInputStreams);
 		} else {
-			writeService.write(recruitBull);
+			rbService.write(recruitBull);
 		}
 		
 		PrintWriter out = resp.getWriter();

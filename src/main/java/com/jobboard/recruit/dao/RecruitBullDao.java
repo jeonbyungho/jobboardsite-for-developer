@@ -23,13 +23,15 @@ public class RecruitBullDao {
 	private final String NAMESPACE = "RecruitmentBulletinMapper";
 	private final SqlSessionFactory sqlSessionFactory = MybatisSessionFactory.getInstance();
 	
-	public Optional<RecruitmentBulletin> findById(long pk) {
+	/** 게시판 조회 */
+	public Optional<RecruitmentBulletin> findById(Long pk) {
 		try(SqlSession sqlSession = sqlSessionFactory.openSession()){
 			RecruitmentBulletin obj= sqlSession.selectOne(NAMESPACE + ".findById", pk);
 			return Optional.ofNullable(obj);
 		}
 	}
 	
+	/** 게시판 작성 */
 	public int insert(RecruitmentBulletin recruitBull) {
 		SqlSession sqlSession = null;
 		try {

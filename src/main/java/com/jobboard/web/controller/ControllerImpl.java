@@ -21,4 +21,34 @@ public abstract class ControllerImpl implements Controller{
 		String viewPath = VIEWS_DIR + view + FILE_TYPE;
 		req.getRequestDispatcher(viewPath).forward(req, resp);
 	}
+	
+	@Override
+	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		final String method =  req.getMethod();
+		if(METHOD_GET.equals(method)) {
+			doGet(req, resp);
+		} else if(METHOD_POST.equals(method)) {
+			doPost(req, resp);
+		} else if(METHOD_PUT.equals(method)) {
+			doPut(req, resp);
+		} else if(METHOD_DELETE.equals(method)) {
+			doDelete(req, resp);
+		}
+	}
+	
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		return;
+	}
+	
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		return;
+	}
+	
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		return;
+	}
+	
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		return;
+	}
 }

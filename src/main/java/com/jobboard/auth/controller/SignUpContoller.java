@@ -18,22 +18,16 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class SignUpContoller extends ControllerImpl {
-	private final String signInViewPath = "auth/signUp_empl";
+	private final String viewPath = "auth/signUp_empl";
 	private final SignUpService signUpService = SignUpService.getInstance();
 	
 	@Override
-	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String method = req.getMethod();
-		if (METHOD_GET.equals(method)) {
-			getJspForward(req, resp, signInViewPath);
-		}
-		else if (METHOD_POST.equals(method)) {
-			signUp(req, resp);
-		}
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		getJspForward(req, resp, viewPath);
 	}
 	
-	@SuppressWarnings("unchecked")
-	private void signUp(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	@Override @SuppressWarnings("unchecked")
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Map<String, String[]> signUpParameterMap = req.getParameterMap();
 		Map<String, Object> memberInfos = new HashMap<>();
 		for (String key: signUpParameterMap.keySet()) {
