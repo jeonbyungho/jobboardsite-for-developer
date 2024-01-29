@@ -2,7 +2,6 @@ package com.jobboard.auth.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Optional;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -28,18 +27,17 @@ public class SignInContoller extends ControllerImpl{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
-		Optional<Employer> optEmpl = signInService.signIn(username, password);
 		
 		PrintWriter out = resp.getWriter();
 		JSONObject jsonObj = new JSONObject();
 		boolean confirmSuccess = false;
-		if(optEmpl.isPresent()) {
-			Employer employer = optEmpl.get();
-			HttpSession session = req.getSession();
-			session.setAttribute("member", employer);
-			confirmSuccess = true;
-			jsonObj.put("profile", employer.toString());
-		}
+
+		Employer employer = signInService.signIn(username, password).orElseThrow();
+		HttpSession session = req.getSession();
+		session.setAttribute("member", employer);
+		confirmSuccess = true;
+		jsonObj.put("profile", employer.toString());
+
 		jsonObj.put("success", confirmSuccess);
 		out.print(jsonObj.toJSONString());
 		out.close();

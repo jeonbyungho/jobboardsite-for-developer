@@ -1,4 +1,4 @@
-package com.jobboard.web.dto;
+package com.jobboard.web.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,9 +6,9 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Getter @ToString @AllArgsConstructor
-public class PagingDto {
+public class Pagination {
 	/** 게시물의 총 개수 */
-	private int totalItem;
+	private long totalItem;
 	/** 한 페이지에 나타낼 게시물 수 */
 	private int countItemPerPage;
 	/** 한 화면에 보여질 페이지 개수*/
@@ -18,7 +18,7 @@ public class PagingDto {
 	private int currentPage;
 	
 	public int getTotalPage() {
-		return (totalItem - 1) / countItemPerPage + 1;
+		return  ((int) totalItem - 1) / countItemPerPage + 1;
 	}
 	
 	public int getStartPageNumber() {
@@ -34,13 +34,20 @@ public class PagingDto {
 		return endPageNumber;
 	}
 	
-	public boolean isPrev() {
+	public boolean isPrevPage() {
 		return currentPage > sizePage;
 	}
 	
-	public boolean isNext() {
+	public boolean isNextPage() {
 		int totalPage = getTotalPage();
 		return currentPage - 1 + (totalPage / countItemPerPage) < totalPage;
 	}
 	
+	public long getFistIndexItem() {
+		return (currentPage - 1) * countItemPerPage + 1;
+	}
+	
+	public long getLastIndexItem() {
+		return currentPage * countItemPerPage;
+	}
 }

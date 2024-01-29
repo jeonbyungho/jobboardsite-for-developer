@@ -1,15 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-	<%@ include file="/WEB-INF/views/include/base/metaHead.jsp" %>
-	<title>구인구직</title>
-</head>
-<body>
-<%@ include file="/WEB-INF/views/include/base/navbar.jsp" %>
-<main class="container">
+<%@ taglib prefix="base" tagdir="/WEB-INF/tags/base" %>
+
+<base:main title="작성">
+<jsp:attribute name="container">
 	<div class="row g-5">
 	<%-- 왼쪽 --%>
 		<div class="col-md-8" id="recruitBullPost">
@@ -26,7 +21,5 @@
 			</c:import>
 		</div>
 	</div>
-</main>
-<%@ include file="/WEB-INF/views/include/base/footer.jsp" %>
-</body>
-</html>
+</jsp:attribute>
+</base:main>

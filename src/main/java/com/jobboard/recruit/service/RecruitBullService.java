@@ -11,6 +11,8 @@ import org.apache.ibatis.exceptions.PersistenceException;
 
 import com.jobboard.recruit.dao.RecruitBullDao;
 import com.jobboard.recruit.domain.RecruitmentBulletin;
+import com.jobboard.web.domain.ResultPage;
+import com.jobboard.web.domain.Pagination;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -75,5 +77,19 @@ public class RecruitBullService {
 			e.printStackTrace();
 		}
 		return Optional.empty();
+	}
+	
+	public Optional<ResultPage<RecruitmentBulletin>> getRecruiBullAll(int countItemPerPage, int sizePage, int page) {
+		ResultPage<RecruitmentBulletin> pagedList = null;
+		try {
+			long count = recruitBullDao.count();
+			Pagination pagination = new Pagination(count, countItemPerPage, sizePage, page);
+			List<RecruitmentBulletin> list = recruitBullDao.findAllByPaging(pagination);
+			log.info("size: " + list.size());
+			pagedList = new ResultPage<>(list, pagination);
+		} catch (PersistenceException e) {
+			e.printStackTrace();
+		}
+		return Optional.ofNullable(pagedList);
 	}
 }

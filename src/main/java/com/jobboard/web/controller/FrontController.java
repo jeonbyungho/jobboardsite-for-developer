@@ -76,7 +76,7 @@ public class FrontController extends HttpServlet {
 	
 	private void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String uri = req.getServletPath();
-		log.info(uri);
+		log.info(uri + " : " + req.getPathInfo());
 		Controller controller = controllerMap.get(uri);
 		
 		if (controller == null) {

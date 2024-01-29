@@ -1,15 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-	<%@ include file="/WEB-INF/views/include/base/metaHead.jsp" %>
-	<title>구인구직 작성</title>
-</head>
-<body>
-<%@ include file="/WEB-INF/views/include/base/navbar.jsp" %>
-<main class="container">
+<%@ taglib prefix="base" tagdir="/WEB-INF/tags/base" %>
+
+<base:main title="작성">
+<jsp:attribute name="container">
 	<div>
     	<!-- Form -->
    		<form method="post" name="recruitBullForm" enctype="multipart/form-data">
@@ -48,9 +43,7 @@
 			</button>
    		</form>
     </div>
-</main>
-<%@ include file="/WEB-INF/views/include/base/footer.jsp" %>
-<script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/base.js'/>"></script>
-<script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/recruit/recruitBull_write.js'/>"></script>
-</body>
-</html>
+	<script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/base.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/recruit/recruitBull_write.js'/>"></script>
+</jsp:attribute>
+</base:main>

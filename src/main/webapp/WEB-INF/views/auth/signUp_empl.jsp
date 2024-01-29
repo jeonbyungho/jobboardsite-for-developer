@@ -1,14 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-	<%@ include file="/WEB-INF/views/include/base/metaHead.jsp" %>
-	<title>회원가입</title>
-</head>
-<body>
-<%@ include file="/WEB-INF/views/include/base/navbar.jsp" %>
-<main class="container">
+<%@ taglib prefix="base" tagdir="/WEB-INF/tags/base" %>
+
+<base:main title="회원가입">
+<jsp:attribute name="container">
 	<form method="post" id="formSignUp">
 		<div class="row mb-3">
 			<label for="inputUsername" class="col-sm-2 col-form-label">아이디</label>
@@ -39,9 +34,7 @@
 		
 		<button type="submit" class="btn btn-primary">회원 가입</button>
 	</form>
-</main>
-<%@ include file="/WEB-INF/views/include/base/footer.jsp" %>
-<script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/base.js'/>"></script>
-<script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/auth/signUp.js'/>"></script>
-</body>
-</html>
+	<script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/base.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/auth/signUp.js'/>"></script>
+</jsp:attribute>
+</base:main>

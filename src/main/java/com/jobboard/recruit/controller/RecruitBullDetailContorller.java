@@ -1,7 +1,6 @@
 package com.jobboard.recruit.controller;
 
 import java.io.IOException;
-import java.util.Optional;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -32,13 +31,10 @@ public class RecruitBullDetailContorller extends ControllerImpl{
 			return;
 		}
 		
-		Optional<RecruitmentBulletin> optRb = rbService.getRecruiBull(id);
-		if (optRb.isPresent()) {
-			RecruitmentBulletin rb = optRb.get();
-			req.setAttribute("recruitbull", rb);
-			getJspForward(req, resp, viewPath);
-			return;
-		}
+		RecruitmentBulletin rb = rbService.getRecruiBull(id).orElseThrow();
+		req.setAttribute("recruitbull", rb);
+		getJspForward(req, resp, viewPath);
+		return;
 		
 	}
 }

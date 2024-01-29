@@ -6,8 +6,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jobboard.recruit.domain.RecruitmentBulletin;
+import com.jobboard.recruit.service.RecruitBullService;
 import com.jobboard.web.controller.ControllerImpl;
-import com.jobboard.web.dto.PagingDto;
+import com.jobboard.web.domain.ResultPage;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,23 +19,25 @@ public class RecruitBullContorller extends ControllerImpl {
 	private final String viewPath = "recruit/recruitBull_list";
 	private final int countItemPerPage = 16;
 	private final int sizePage = 10;
+	private final RecruitBullService rbService = RecruitBullService.getInstance();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Integer id = null;
+		Integer page = 1;
 		
 		try {
-			id = Integer.parseInt(req.getPathInfo().substring(1));
+			page = Integer.parseInt(req.getPathInfo().substring(1));
 		} catch (NumberFormatException e) {
 			log.error(e.getMessage());
 			return;
 		} catch (NullPointerException e) {
 			log.error(e.getMessage());
-			id = 1;
 		}
 		
-		PagingDto page = new PagingDto(1000, countItemPerPage, sizePage, id);
-		req.setAttribute("pagingDto", page);
+		ResultPage<RecruitmentBulletin> rbsPaging = rbService.getRecruiBullAll(countItemPerPage, sizePage, page).orElseThrow();
+		System.out.println(rbsPaging.getList().toString());
+		req.setAttribute("recruitBulls", rbsPaging.getList());
+		req.setAttribute("pagination", rbsPaging.getPage());
 		getJspForward(req, resp, viewPath);
 	}
 
