@@ -20,11 +20,10 @@ public class RecruitBullDetailContorller extends ControllerImpl{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String info = req.getPathInfo().substring(1);
 		Long id = null;
 		
 		try {
-			id = Long.parseLong(info);
+			id = Long.parseLong(req.getPathInfo().substring(1));
 		} catch (NumberFormatException e) {
 			log.error(e.getMessage());
 			return;

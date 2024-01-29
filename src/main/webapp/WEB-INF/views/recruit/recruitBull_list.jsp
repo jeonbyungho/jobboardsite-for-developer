@@ -20,11 +20,12 @@
     </c:import>
     
 	<!-- 게시판 페이징 -->
-	<c:import url="/WEB-INF/views/include/post/pagination.jsp">
-		<c:param name="startPageNo" value="1"/>
-		<c:param name="endPageNo" value="4"/>
-		<c:param name="currPageNo" value="2"/>
-		<c:param name="endPagingCheck" value="true"/>
+	<c:import url="/WEB-INF/views/include/post/post_paging.jsp">
+		<c:param name="startPageNo" value="${pagingDto.startPageNumber }"/>
+		<c:param name="endPageNo" value="${pagingDto.endPageNumber }"/>
+		<c:param name="currentPageNo" value="${pagingDto.currentPage }"/>
+		<c:param name="startPagingCheck" value="${pagingDto.prev }"/>
+		<c:param name="endPagingCheck" value="${pagingDto.next }"/>
 		<c:param name="url" value="#"/>
 		<c:param name="tesr" value=""/>
 	</c:import>

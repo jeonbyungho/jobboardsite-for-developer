@@ -28,7 +28,7 @@
 </insert>
 
 <!-- 게시판 조회 -->
-<select id="findById" parameterType="Long" resultMap="RecruitBullResult">
+<select id="findById" parameterType="long" resultMap="RecruitBullResult">
 	select 	rb.RECRUI_ID 
 	,	rb.TITLE 
 	,	rb.CONTENT 

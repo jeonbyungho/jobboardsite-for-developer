@@ -29,3 +29,24 @@ insert into RECRUITMENT_BULLETIN rb (
 	,	'content'
 	,	'photo_path/'
 );
+
+-- 단일 조회
+select 	rb.RECRUI_ID 
+	,	rb.TITLE 
+	,	rb.CONTENT 
+	,	rb.PHOTO_PATH 
+	,	rb.CREATED_AT 
+	,	rb.MODIFIED_AT 
+from RECRUITMENT_BULLETIN rb 
+where rb.RECRUI_ID = 1;
+
+-- 다수 조회 페이징
+select * from (
+	select rownum as row_no
+	,	rb.TITLE
+	,	rb.PHOTO_PATH
+	,	rb.CREATED_AT
+	,	rb.MODIFIED_AT
+	from RECRUITMENT_BULLETIN rb
+	) where row_no between 1 and 5
+order by row_no desc;

@@ -18,9 +18,10 @@ public class LogFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
+		long startTime = System.currentTimeMillis();
 		HttpServletRequest httpReq = (HttpServletRequest) req;
-		log.info("Servlet : {}, PathInfo: {}", httpReq.getServletPath(), httpReq.getPathInfo());
 		chain.doFilter(req, resp);
+		log.debug("URI {} - time : {}", httpReq.getRequestURI(),System.currentTimeMillis() - startTime);
 	}
 	
 }
