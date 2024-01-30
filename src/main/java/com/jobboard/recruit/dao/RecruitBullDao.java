@@ -10,10 +10,12 @@ import com.jobboard.recruit.domain.RecruitmentBulletin;
 import com.jobboard.web.dao.MybatisSessionFactory;
 import com.jobboard.web.domain.Pagination;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RecruitBullDao {
 	private static RecruitBullDao instance;
-	
-	private RecruitBullDao() {}
 	
 	public static RecruitBullDao getInstance() {
 		if(instance == null) {

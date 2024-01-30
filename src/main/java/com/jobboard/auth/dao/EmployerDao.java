@@ -10,10 +10,12 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import com.jobboard.auth.domain.Employer;
 import com.jobboard.web.dao.MybatisSessionFactory;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class EmployerDao implements AuthenticationDao<Employer>{
 	private static EmployerDao instance;
-	
-	private EmployerDao() {}
 	
 	public static EmployerDao getInstance() {
 		if(instance == null) {

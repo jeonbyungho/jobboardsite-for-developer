@@ -7,11 +7,13 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MybatisSessionFactory {
 	
 	private static SqlSessionFactory instance;
-	
-	private MybatisSessionFactory() {}
 	
 	public static SqlSessionFactory getInstance() {
 		if(instance == null) {

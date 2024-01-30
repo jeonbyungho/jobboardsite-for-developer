@@ -14,13 +14,14 @@ import com.jobboard.recruit.domain.RecruitmentBulletin;
 import com.jobboard.web.domain.ResultPage;
 import com.jobboard.web.domain.Pagination;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RecruitBullService {
 	private static RecruitBullService instance;
-	
-	private RecruitBullService() {}
 	
 	public static RecruitBullService getInstance() {
 		if(instance == null) {

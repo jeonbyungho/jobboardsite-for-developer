@@ -5,10 +5,12 @@ import java.util.Optional;
 import com.jobboard.auth.dao.EmployerDao;
 import com.jobboard.auth.domain.Employer;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class SignInService {
 	private static SignInService instance;
-	
-	private SignInService() {}
 	
 	public static SignInService getInstance() {
 		if(instance == null) {

@@ -4,10 +4,12 @@ import java.util.Map;
 
 import com.jobboard.auth.dao.EmployerDao;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class SignUpService {
 	private static SignUpService instance;
-	
-	private SignUpService() {}
 	
 	public static SignUpService getInstance() {
 		if(instance == null) {
