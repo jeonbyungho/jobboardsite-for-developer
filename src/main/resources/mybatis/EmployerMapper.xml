@@ -41,7 +41,7 @@
 <!-- 회원 가입 -->
 <insert id="signUp" parameterType="hashmap">
 	<selectKey keyProperty="id" resultType="int" order="BEFORE">
-		SELECT member_seq.nextval FROM dual
+		SELECT members_seq.nextval FROM dual
 	</selectKey>
 	BEGIN
 	INSERT INTO members m (

@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.jobboard.recruit.domain.RecruitmentBulletin;
+import com.jobboard.recruit.model.RecruitmentBulletin;
 import com.jobboard.web.dao.MybatisSessionFactory;
-import com.jobboard.web.domain.Pagination;
+import com.jobboard.web.model.Pagination;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.jobboard.auth.controller.SignInContoller;
 import com.jobboard.auth.controller.SignUpContoller;
 import com.jobboard.auth.controller.SignUpDuplicateCheckController;
-import com.jobboard.auth.controller.WelcomeContoller;
 import com.jobboard.recruit.controller.RecruitBullContorller;
 import com.jobboard.recruit.controller.RecruitBullDetailContorller;
 import com.jobboard.recruit.controller.RecruitBullWriteContorller;
+import com.jobboard.web.WebURLPattern;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -37,7 +37,7 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		controllerMap = new HashMap<String, Controller>();
-		controllerMap.put("/", new WelcomeContoller());
+		controllerMap.put("/", new SimpleContoller("welcome"));
 		controllerMap.put(WebURLPattern.SIGNIN, new SignInContoller());
 		Controller signUpContoller = new SignUpContoller();
 		controllerMap.put(WebURLPattern.SIGNUP_EMPLOYER, signUpContoller);

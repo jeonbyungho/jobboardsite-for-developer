@@ -1,6 +1,6 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ tag import="com.jobboard.web.controller.WebURLPattern" %>
+<%@ tag import="com.jobboard.web.WebURLPattern" %>
 <nav class="navbar navbar-expand-md sticky-top bg-body border-bottom shadow-sm mb-3">
 	<div class="container">
 	

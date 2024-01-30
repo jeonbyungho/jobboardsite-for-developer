@@ -1,9 +1,9 @@
-package com.jobboard.recruit.domain;
+package com.jobboard.recruit.model;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.jobboard.auth.domain.Employer;
+import com.jobboard.auth.model.Employer;
 
 import lombok.Getter;
 import lombok.Setter;

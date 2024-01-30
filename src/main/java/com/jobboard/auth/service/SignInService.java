@@ -3,7 +3,7 @@ package com.jobboard.auth.service;
 import java.util.Optional;
 
 import com.jobboard.auth.dao.EmployerDao;
-import com.jobboard.auth.domain.Employer;
+import com.jobboard.auth.model.Employer;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

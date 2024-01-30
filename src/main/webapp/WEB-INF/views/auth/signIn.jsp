@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="base" tagdir="/WEB-INF/tags/base" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="com.jobboard.web.controller.WebURLPattern" %>
+<%@ page import="com.jobboard.web.WebURLPattern" %>
 
 <base:main title="로그인">
 <jsp:attribute name="container">

@@ -4,10 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.jobboard.auth.domain.Employer;
+import com.jobboard.auth.model.Employer;
 import com.jobboard.web.dao.MybatisSessionFactory;
 
 import lombok.AccessLevel;
@@ -46,7 +47,7 @@ public class EmployerDao implements AuthenticationDao<Employer>{
 			sqlSession.insert(NAMESPACE + ".signUp", parameters);
 			sqlSession.commit();
 			return 1;
-		} catch (Exception e) {
+		} catch (PersistenceException e) {
 			e.printStackTrace();
 			sqlSession.rollback();
 			sqlSession.close();

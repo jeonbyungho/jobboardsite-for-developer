@@ -21,7 +21,8 @@ public class LogFilter implements Filter {
 		long startTime = System.currentTimeMillis();
 		HttpServletRequest httpReq = (HttpServletRequest) req;
 		chain.doFilter(req, resp);
-		log.debug("URI {} - time : {}", httpReq.getRequestURI(),System.currentTimeMillis() - startTime);
+		long endTime = System.currentTimeMillis();
+		log.debug("{} \"{}\" {}ms", httpReq.getMethod(), httpReq.getRequestURI(), endTime - startTime);
 	}
 	
 }

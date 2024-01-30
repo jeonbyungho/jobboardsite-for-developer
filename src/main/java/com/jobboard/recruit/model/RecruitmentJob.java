@@ -1,4 +1,4 @@
-package com.jobboard.recruit.domain;
+package com.jobboard.recruit.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

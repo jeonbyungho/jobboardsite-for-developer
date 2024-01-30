@@ -15,11 +15,11 @@ import javax.servlet.http.Part;
 
 import org.json.simple.JSONObject;
 
-import com.jobboard.recruit.domain.RecruitmentBulletin;
+import com.jobboard.recruit.model.RecruitmentBulletin;
 import com.jobboard.recruit.service.RecruitBullService;
+import com.jobboard.web.WebURLPattern;
 import com.jobboard.web.controller.ControllerImpl;
 import com.jobboard.web.controller.HttpUtil;
-import com.jobboard.web.controller.WebURLPattern;
 
 public class RecruitBullWriteContorller extends ControllerImpl{
 	private final String viewPath = "recruit/recruitBull_form";

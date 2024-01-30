@@ -1,4 +1,4 @@
-package com.jobboard.auth.domain;
+package com.jobboard.auth.model;
 
 import java.time.LocalDate;
 

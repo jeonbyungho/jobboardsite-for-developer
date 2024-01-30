@@ -2,10 +2,10 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="Member" type="com.jobboard.auth.domain.Member"/>
-		<typeAlias alias="Employer" type="com.jobboard.auth.domain.Employer"/>
-		<typeAlias alias="RecruitmentBulletin" type="com.jobboard.recruit.domain.RecruitmentBulletin"/>
-		<typeAlias alias="Pagination" type="com.jobboard.web.domain.Pagination"/>
+		<typeAlias alias="Member" type="com.jobboard.auth.model.Member"/>
+		<typeAlias alias="Employer" type="com.jobboard.auth.model.Employer"/>
+		<typeAlias alias="RecruitmentBulletin" type="com.jobboard.recruit.model.RecruitmentBulletin"/>
+		<typeAlias alias="Pagination" type="com.jobboard.web.model.Pagination"/>
 	</typeAliases>
 	
 	<environments default="development">

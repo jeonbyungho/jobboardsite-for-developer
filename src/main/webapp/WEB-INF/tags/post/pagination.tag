@@ -1,7 +1,7 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@ attribute name="pagination" required="true" type="com.jobboard.web.domain.Pagination"%>
+<%@ attribute name="pagination" required="true" type="com.jobboard.web.model.Pagination"%>
 
 <nav class="mt-3">
 	<ul class="pagination justify-content-center">

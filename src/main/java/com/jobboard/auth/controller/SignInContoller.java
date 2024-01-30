@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 
-import com.jobboard.auth.domain.Employer;
+import com.jobboard.auth.model.Employer;
 import com.jobboard.auth.service.SignInService;
 import com.jobboard.web.controller.ControllerImpl;
 import com.jobboard.web.controller.HttpUtil;
@@ -33,7 +33,7 @@ public class SignInContoller extends ControllerImpl{
 		PrintWriter out = resp.getWriter();
 		JSONObject jsonObj = new JSONObject();
 		boolean confirmSuccess = false;
-
+		
 		Employer employer = signInService.signIn(username, password).orElseThrow();
 		HttpSession session = req.getSession();
 		session.setAttribute("member", employer);

@@ -1,4 +1,4 @@
-package com.jobboard.web.controller;
+package com.jobboard.web;
 
 public class WebURLPattern {
 	public static final String RESOURCES = "/resources";

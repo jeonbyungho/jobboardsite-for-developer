@@ -10,9 +10,9 @@ import java.util.Optional;
 import org.apache.ibatis.exceptions.PersistenceException;
 
 import com.jobboard.recruit.dao.RecruitBullDao;
-import com.jobboard.recruit.domain.RecruitmentBulletin;
-import com.jobboard.web.domain.ResultPage;
-import com.jobboard.web.domain.Pagination;
+import com.jobboard.recruit.model.RecruitmentBulletin;
+import com.jobboard.web.model.Pagination;
+import com.jobboard.web.model.ResultPage;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -39,7 +39,7 @@ public class RecruitBullService {
 	
 	public int write(RecruitmentBulletin recruitBull, List<InputStream> photoInputStreams) {
 		String photosPath = recruitBull.getPhotosPath();
-		if(photosPath == null || photosPath.isBlank() || photoInputStreams.size() <= 0) {
+		if(photosPath == null || photosPath.isBlank() || photoInputStreams.isEmpty()) {
 			return -1;
 		}
 		
