@@ -35,8 +35,18 @@ public class SignUpContoller extends ControllerImpl {
 		}
 	}
 	
-	@Override @SuppressWarnings("unchecked")
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String pathInfo = req.getPathInfo();
+		if(pathInfo.equals(WebURLPattern.EMPLOYER)) {
+			employerSignUp(req, resp);
+		} else if(pathInfo.equals(WebURLPattern.JOBSEEKER)) {
+			employerSignUp(req, resp);
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void employerSignUp(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException {
 		Map<String, String[]> signUpParameterMap = req.getParameterMap();
 		Map<String, Object> memberInfos = new HashMap<>();
 		for (String key: signUpParameterMap.keySet()) {
@@ -45,14 +55,8 @@ public class SignUpContoller extends ControllerImpl {
 		int result = signUpService.signUp(memberInfos);
 		log.info("고용주 가입 결과:"+ result);
 		
-		PrintWriter out = resp.getWriter();
-		JSONObject jsonObj = new JSONObject();
-		boolean confirmSuccess = false;
-		if(result > 0) {
-			confirmSuccess = true;
-		}
-		jsonObj.put("success", confirmSuccess);
-		out.print(jsonObj.toJSONString());
-		out.close();
+		Map<String, Object> json = new JSONObject();
+		json.put("success", result > 0);
+		httUtil.responseJson(resp, json);
 	}
 }

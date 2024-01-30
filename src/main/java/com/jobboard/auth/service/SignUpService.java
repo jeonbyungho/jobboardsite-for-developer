@@ -24,8 +24,8 @@ public class SignUpService {
 		return employerDao.signUp(memberInfos);
 	}
 	
-	public boolean duplicateUsername(String username) {
-		int count = employerDao.duplicateUsername(username);
+	public boolean checkUsernameDuplicate(String username) {
+		int count = employerDao.checkUsernameDuplicate(username);
 		return count > 0;
 	}
 }

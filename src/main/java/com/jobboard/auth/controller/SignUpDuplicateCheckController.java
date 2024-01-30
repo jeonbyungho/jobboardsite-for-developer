@@ -18,7 +18,7 @@ public class SignUpDuplicateCheckController extends ControllerImpl{
 	@Override @SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String username =req.getParameter("username");
-		boolean result = signUpService.duplicateUsername(username);
+		boolean result = signUpService.checkUsernameDuplicate(username);
 		
 		PrintWriter out = resp.getWriter();
 		JSONObject jsonObj = new JSONObject();

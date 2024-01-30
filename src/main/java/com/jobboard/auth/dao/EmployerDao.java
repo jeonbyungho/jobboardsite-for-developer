@@ -15,7 +15,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class EmployerDao implements AuthenticationDao<Employer>{
+public class EmployerDao implements MemberDao<Employer>{
 	private static EmployerDao instance;
 	
 	public static EmployerDao getInstance() {
@@ -30,21 +30,22 @@ public class EmployerDao implements AuthenticationDao<Employer>{
 	
 	@Override
 	public Optional<Employer> signIn(String username, String password) {
-		Map<String, String> parameter = new HashMap<>();
-		parameter.put("username", username);
-		parameter.put("password", password);
+		Employer employer = null;
+		Map<String, String> params = new HashMap<>();
+		params.put("username", username);
+		params.put("password", password);
 		try(SqlSession sqlSession = sqlSessionFactory.openSession()){
-			Employer employer = sqlSession.selectOne(NAMESPACE + ".signIn", parameter);
+			employer = sqlSession.selectOne(NAMESPACE + ".signIn", params);
 			return Optional.ofNullable(employer);
 		}
 	}
 	
 	@Override
-	public int signUp(Map<String, Object> parameters) {
+	public int signUp(Map<String, Object> params) {
 		SqlSession sqlSession = null;
 		try {
 			sqlSession = sqlSessionFactory.openSession();
-			sqlSession.insert(NAMESPACE + ".signUp", parameters);
+			sqlSession.insert(NAMESPACE + ".signUp", params);
 			sqlSession.commit();
 			return 1;
 		} catch (PersistenceException e) {
@@ -56,7 +57,7 @@ public class EmployerDao implements AuthenticationDao<Employer>{
 	}
 	
 	@Override
-	public int duplicateUsername(String username) {
+	public int checkUsernameDuplicate(String username) {
 		try(SqlSession sqlSession = sqlSessionFactory.openSession()){
 			return sqlSession.selectOne(NAMESPACE + ".countByUsername", username);
 		}

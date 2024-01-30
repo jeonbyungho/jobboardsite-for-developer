@@ -1,10 +1,14 @@
 package com.jobboard.web.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.JSONObject;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -26,5 +30,13 @@ public class HttpUtil {
 	public void forward(HttpServletRequest req, HttpServletResponse resp, String view) throws ServletException, IOException {
 		String viewPath = this.viewDir + view + this.fileType;
 		req.getRequestDispatcher(viewPath).forward(req, resp);
+	}
+	
+	public void responseJson(HttpServletResponse resp, Map<String, Object> msg) throws IOException {
+		resp.setCharacterEncoding("UTF-8");
+		JSONObject json = new JSONObject(msg);
+		PrintWriter out = resp.getWriter();
+		out.println(json.toJSONString());
+		out.close();
 	}
 }

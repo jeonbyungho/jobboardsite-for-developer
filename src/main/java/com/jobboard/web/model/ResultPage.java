@@ -10,7 +10,7 @@ import lombok.Getter;
 public class ResultPage<T> {
 	private final List<T> list;
 	private final Pagination page;
-	private final Map<String, String> message;
+	private final Map<String, Object> message;
 	
 	public ResultPage(List<T> list, Pagination page) {
 		this.list = list;

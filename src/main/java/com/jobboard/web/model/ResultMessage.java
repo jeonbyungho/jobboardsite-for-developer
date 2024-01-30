@@ -8,7 +8,7 @@ import lombok.Getter;
 @Getter @AllArgsConstructor
 public class ResultMessage<T> {
 	private final T value;
-	private final Map<String, String> message;
+	private final Map<String, Object> message;
 	
 	public ResultMessage(T value) {
 		this.value = value;
