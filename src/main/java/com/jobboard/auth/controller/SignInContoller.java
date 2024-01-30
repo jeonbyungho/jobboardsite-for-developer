@@ -13,14 +13,16 @@ import org.json.simple.JSONObject;
 import com.jobboard.auth.domain.Employer;
 import com.jobboard.auth.service.SignInService;
 import com.jobboard.web.controller.ControllerImpl;
+import com.jobboard.web.controller.HttpUtil;
 
 public class SignInContoller extends ControllerImpl{
 	private final String viewPath = "auth/signIn";
 	private final SignInService signInService = SignInService.getInstance();
+	private final HttpUtil httUtil = HttpUtil.getInstance();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		getJspForward(req, resp, viewPath);
+		httUtil.forward(req, resp, viewPath);
 	}
 	
 	@Override @SuppressWarnings("unchecked")

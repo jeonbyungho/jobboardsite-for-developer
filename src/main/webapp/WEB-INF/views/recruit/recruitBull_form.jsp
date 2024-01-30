@@ -2,8 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="base" tagdir="/WEB-INF/tags/base" %>
+<%@ page import="com.jobboard.web.controller.WebURLPattern" %>
 
 <base:main title="작성">
+<jsp:attribute name="head">
+	<script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/base.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/recruit/recruitBull_write.js'/>" defer></script>
+</jsp:attribute>
 <jsp:attribute name="container">
 	<div>
     	<!-- Form -->
@@ -43,7 +48,5 @@
 			</button>
    		</form>
     </div>
-	<script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/base.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/recruit/recruitBull_write.js'/>"></script>
 </jsp:attribute>
 </base:main>

@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="base" tagdir="/WEB-INF/tags/base" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.jobboard.web.controller.WebURLPattern" %>
 
 <base:main title="회원가입">
+<jsp:attribute name="head">
+	<script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/base.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/auth/signUp.js'/>" defer></script>
+</jsp:attribute>
 <jsp:attribute name="container">
 	<form method="post" id="formSignUp">
 		<div class="row mb-3">
@@ -34,7 +40,5 @@
 		
 		<button type="submit" class="btn btn-primary">회원 가입</button>
 	</form>
-	<script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/base.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='${WebURLPattern.RESOURCES}/js/auth/signUp.js'/>"></script>
 </jsp:attribute>
 </base:main>

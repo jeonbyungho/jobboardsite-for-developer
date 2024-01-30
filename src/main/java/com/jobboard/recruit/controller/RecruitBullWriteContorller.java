@@ -18,15 +18,17 @@ import org.json.simple.JSONObject;
 import com.jobboard.recruit.domain.RecruitmentBulletin;
 import com.jobboard.recruit.service.RecruitBullService;
 import com.jobboard.web.controller.ControllerImpl;
+import com.jobboard.web.controller.HttpUtil;
 import com.jobboard.web.controller.WebURLPattern;
 
 public class RecruitBullWriteContorller extends ControllerImpl{
 	private final String viewPath = "recruit/recruitBull_form";
 	private final RecruitBullService rbService = RecruitBullService.getInstance();
+	private final HttpUtil httUtil = HttpUtil.getInstance();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		getJspForward(req, resp, viewPath);
+		httUtil.forward(req, resp, viewPath);
 	}
 	
 	@Override @SuppressWarnings("unchecked")

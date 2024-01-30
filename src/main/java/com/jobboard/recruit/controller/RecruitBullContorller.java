@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.jobboard.recruit.domain.RecruitmentBulletin;
 import com.jobboard.recruit.service.RecruitBullService;
 import com.jobboard.web.controller.ControllerImpl;
+import com.jobboard.web.controller.HttpUtil;
 import com.jobboard.web.domain.ResultPage;
 
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +20,9 @@ public class RecruitBullContorller extends ControllerImpl {
 	private final String viewPath = "recruit/recruitBull_list";
 	private final int countItemPerPage = 16;
 	private final int sizePage = 10;
+	
 	private final RecruitBullService rbService = RecruitBullService.getInstance();
+	private final HttpUtil httUtil = HttpUtil.getInstance();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,7 +41,7 @@ public class RecruitBullContorller extends ControllerImpl {
 		System.out.println(rbsPaging.getList().toString());
 		req.setAttribute("recruitBulls", rbsPaging.getList());
 		req.setAttribute("pagination", rbsPaging.getPage());
-		getJspForward(req, resp, viewPath);
+		httUtil.forward(req, resp, viewPath);
 	}
 
 }
