@@ -23,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @WebServlet(name = "FrontControllerServlet", urlPatterns = {
-		"/", WebURLPattern.SIGNIN, WebURLPattern.SIGNUP_EMPLOYER, WebURLPattern.SIGNUP_JOBSEEKER, WebURLPattern.SIGNUP_DUPLICATE
+		"/", WebURLPattern.SIGNIN, WebURLPattern.SIGNUP + "/*", WebURLPattern.SIGNUP_DUPLICATE
 	,	WebURLPattern.RECRUIT_POSTLIST + "/*", WebURLPattern.RECRUIT_POSTDETAIL + "/*", WebURLPattern.RECRUIT_POSTWRITE
 	})
 @MultipartConfig(fileSizeThreshold = 1024 * 1024
@@ -39,9 +39,7 @@ public class FrontController extends HttpServlet {
 		controllerMap = new HashMap<String, Controller>();
 		controllerMap.put("/", new SimpleContoller("welcome"));
 		controllerMap.put(WebURLPattern.SIGNIN, new SignInContoller());
-		Controller signUpContoller = new SignUpContoller();
-		controllerMap.put(WebURLPattern.SIGNUP_EMPLOYER, signUpContoller);
-		controllerMap.put(WebURLPattern.SIGNUP_JOBSEEKER, signUpContoller);
+		controllerMap.put(WebURLPattern.SIGNUP, new SignUpContoller());
 		controllerMap.put(WebURLPattern.SIGNUP_DUPLICATE, new SignUpDuplicateCheckController());
 		
 		controllerMap.put(WebURLPattern.RECRUIT_POSTLIST, new RecruitBullContorller());

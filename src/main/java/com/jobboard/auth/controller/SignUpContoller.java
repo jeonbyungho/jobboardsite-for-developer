@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 
 import com.jobboard.auth.service.SignUpService;
+import com.jobboard.web.WebURLPattern;
 import com.jobboard.web.controller.ControllerImpl;
 import com.jobboard.web.controller.HttpUtil;
 
@@ -19,13 +20,19 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class SignUpContoller extends ControllerImpl {
-	private final String viewPath = "auth/signUp_empl";
+	private final String emplViewPath = "auth/signUp_empl";
+	private final String seekerViewPath = "auth/signUp_empl";
 	private final SignUpService signUpService = SignUpService.getInstance();
 	private final HttpUtil httUtil = HttpUtil.getInstance();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		httUtil.forward(req, resp, viewPath);
+		String pathInfo = req.getPathInfo();
+		if(pathInfo.equals(WebURLPattern.EMPLOYER)) {
+			httUtil.forward(req, resp, emplViewPath);
+		} else if(pathInfo.equals(WebURLPattern.JOBSEEKER)) {
+			httUtil.forward(req, resp, seekerViewPath);
+		}
 	}
 	
 	@Override @SuppressWarnings("unchecked")
