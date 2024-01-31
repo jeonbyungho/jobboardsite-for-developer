@@ -1,6 +1,5 @@
 #
-sql/temp/
-src/main/java/temp/
+temp/
 
 #
 .vscode/
