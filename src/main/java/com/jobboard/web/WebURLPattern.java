@@ -13,4 +13,6 @@ public class WebURLPattern {
 	public static final String RECRUIT_POSTLIST = "/recruit/list";
 	public static final String RECRUIT_POSTDETAIL = "/recruit/detail";
 	public static final String RECRUIT_POSTWRITE = "/recruit/write";
+	
+	public static final String ADDRESS_API_POPUP = "/popup/address";
 }

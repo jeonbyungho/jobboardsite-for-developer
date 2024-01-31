@@ -42,11 +42,14 @@ where rb.RECRUI_ID = 1;
 
 -- 다수 조회 페이징
 select * from (
-	select rownum as row_no
+	select ROW_NUMBER() OVER(ORDER by rb.RECRUI_ID DESC) as row_no
 	,	rb.TITLE
 	,	rb.PHOTO_PATH
 	,	rb.CREATED_AT
 	,	rb.MODIFIED_AT
 	from RECRUITMENT_BULLETIN rb
 	) where row_no between 1 and 5
-order by row_no desc;
+order by row_no desc
+;
+
+select count(1) from RECRUITMENT_BULLETIN rb;
