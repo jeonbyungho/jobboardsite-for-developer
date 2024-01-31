@@ -13,7 +13,7 @@ import com.jobboard.web.controller.ControllerImpl;
 import com.jobboard.web.controller.HttpUtil;
 import com.jobboard.web.model.ResultMessage;
 
-public class SignInContoller extends ControllerImpl{
+public class SignInController extends ControllerImpl{
 	private final String viewPath = "auth/signIn";
 	private final SignInService signInService = SignInService.getInstance();
 	private final HttpUtil httUtil = HttpUtil.getInstance();

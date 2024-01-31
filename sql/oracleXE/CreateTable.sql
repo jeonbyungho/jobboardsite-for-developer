@@ -1,5 +1,5 @@
 CREATE TABLE member (
-    id NUMBER(20,0) PRIMARY KEY,
+    id NUMBER(20, 0) PRIMARY KEY,
     username VARCHAR2(255) UNIQUE NOT NULL,
     password VARCHAR2(255) NOT NULL,
     email VARCHAR(255),
@@ -11,7 +11,7 @@ CREATE SEQUENCE member_seq START WITH 1 INCREMENT BY 1;
 COMMENT ON TABLE member IS '회원';
 
 CREATE TABLE individual_member (
-    member_id NUMBER(20,0),
+    member_id NUMBER(20, 0),
     name VARCHAR2(255) NOT NULL,
     phone VARCHAR2(255) NOT NULL,
     FOREIGN KEY (member_id) REFERENCES member(id) ON DELETE CASCADE
@@ -20,9 +20,9 @@ CREATE TABLE individual_member (
 COMMENT ON TABLE individual_member IS '개인 회원';
 
 CREATE TABLE business_member (
-    member_id NUMBER(20,0),
-    business_registration_number NUMBER(12,0) NOT NULL,
-    company_type NUMBER(1,0) NOT NULL,
+    member_id NUMBER(20, 0),
+    business_registration_number NUMBER(12, 0) NOT NULL,
+    company_type NUMBER(1, 0) NOT NULL,
     company_name VARCHAR2(255) NOT NULL,
     ceo_name VARCHAR2(255) NOT NULL,
     FOREIGN KEY (member_id) REFERENCES member(id) ON DELETE CASCADE
@@ -30,3 +30,29 @@ CREATE TABLE business_member (
 
 COMMENT ON TABLE business_member IS '기업 회원';
 
+-- 회원 가입
+SELECT member_seq.nextval FROM dual;
+
+BEGIN
+    INSERT INTO member (
+        id,
+        username,
+        password,
+        email
+    ) VALUES (
+        member_seq.nextval,
+        'test',
+        '1234',
+        'email@test.com'
+    );
+    INSERT INTO business_member (
+        member_id,
+        business_registration_number,
+        company_type,
+        company_name,
+        ceo_name
+    ) VALUES (
+        member_seq.currval,
+        
+    );
+END;

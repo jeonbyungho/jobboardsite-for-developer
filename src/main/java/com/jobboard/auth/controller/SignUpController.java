@@ -8,8 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONObject;
-
+import com.jobboard.auth.model.BusinessMember;
+import com.jobboard.auth.model.Member;
 import com.jobboard.auth.service.SignUpService;
 import com.jobboard.web.WebURLPattern;
 import com.jobboard.web.controller.ControllerImpl;
@@ -18,7 +18,7 @@ import com.jobboard.web.controller.HttpUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class SignUpContoller extends ControllerImpl {
+public class SignUpController extends ControllerImpl {
 	private final String emplViewPath = "auth/signUp_empl";
 	private final String seekerViewPath = "auth/signUp_empl";
 	private final SignUpService signUpService = SignUpService.getInstance();
@@ -44,18 +44,25 @@ public class SignUpContoller extends ControllerImpl {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
 	private void employerSignUp(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException {
-		Map<String, String[]> signUpParameterMap = req.getParameterMap();
-		Map<String, Object> memberInfos = new HashMap<>();
-		for (String key: signUpParameterMap.keySet()) {
-			memberInfos.put(key, String.join("", signUpParameterMap.get(key)));
-		}
-		int result = signUpService.signUp(memberInfos);
-		log.info("고용주 가입 결과:"+ result);
+		String companyType = req.getParameter("companyType");
+		String username = req.getParameter("username");
+		String password = req.getParameter("password");
+		String email = req.getParameter("email");
+		String companyName = req.getParameter("companyName");
+		String ceoName = req.getParameter("ceoName");
 		
-		Map<String, Object> json = new JSONObject();
-		json.put("success", result > 0);
+		Member member = new Member(username, password, email);
+		BusinessMember businessMember = new BusinessMember();
+		businessMember.setCompanyName(companyName);
+		businessMember.setCompanyType(companyType);
+		businessMember.setMember(member);
+		businessMember.setCeoName(ceoName);
+		int result = signUpService.signUp(businessMember);
+
+		Map<String, Object> json = new HashMap<>();
+		json.put("result", result);
+		json.put("profile", businessMember.toString());
 		httUtil.responseJson(resp, json);
 	}
 }

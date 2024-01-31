@@ -22,7 +22,7 @@ public class LogFilter implements Filter {
 		HttpServletRequest httpReq = (HttpServletRequest) req;
 		chain.doFilter(req, resp);
 		long endTime = System.currentTimeMillis();
-		log.debug("{} \"{}\" {}ms", httpReq.getMethod(), httpReq.getRequestURI(), endTime - startTime);
+		log.debug("{} \"{}\" \"{}\" {}ms", httpReq.getMethod(), httpReq.getServletPath(), httpReq.getPathInfo(), endTime - startTime);
 	}
 	
 }

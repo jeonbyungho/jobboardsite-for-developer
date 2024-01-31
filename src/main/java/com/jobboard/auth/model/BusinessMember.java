@@ -8,6 +8,11 @@ import lombok.ToString;
 public class BusinessMember {
     private Member member;
     private CompanyType companyType;
+    private int bizRegistrationNo;
     private String companyName;
-    private String ceo;
+    private String ceoName;
+
+    public void setCompanyType(String type){
+        this.companyType = CompanyType.valueOf(type.toUpperCase());
+    }
 }

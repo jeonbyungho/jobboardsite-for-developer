@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jobboard.auth.controller.SignInContoller;
-import com.jobboard.auth.controller.SignUpContoller;
+import com.jobboard.auth.controller.SignInController;
+import com.jobboard.auth.controller.SignUpController;
 import com.jobboard.auth.controller.SignUpDuplicateCheckController;
 import com.jobboard.etc.controller.AddressSearchController;
 import com.jobboard.etc.controller.SimpleContoller;
@@ -41,8 +41,8 @@ public class FrontController extends HttpServlet {
 	public void init() throws ServletException {
 		controllerMap = new HashMap<String, Controller>();
 		controllerMap.put("/", new SimpleContoller("welcome"));
-		controllerMap.put(WebURLPattern.SIGNIN, new SignInContoller());
-		controllerMap.put(WebURLPattern.SIGNUP, new SignUpContoller());
+		controllerMap.put(WebURLPattern.SIGNIN, new SignInController());
+		controllerMap.put(WebURLPattern.SIGNUP, new SignUpController());
 		controllerMap.put(WebURLPattern.SIGNUP_DUPLICATE, new SignUpDuplicateCheckController());
 		
 		controllerMap.put(WebURLPattern.RECRUIT_POSTLIST, new RecruitBullContorller());

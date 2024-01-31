@@ -1,8 +1,8 @@
 package com.jobboard.auth.service;
 
-import java.util.Map;
-
+import com.jobboard.auth.dao.BusinessMemberDao;
 import com.jobboard.auth.dao.EmployerDao;
+import com.jobboard.auth.model.BusinessMember;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -19,10 +19,11 @@ public class SignUpService {
 	}
 	
 	private final EmployerDao employerDao = EmployerDao.getInstance();
+	private final BusinessMemberDao businessMemberDao = BusinessMemberDao.getInstance();
 	
-	public int signUp(Map<String, Object> memberInfos){
-		return employerDao.signUp(memberInfos);
-	}
+	public int signUp(BusinessMember businessMember) {
+        return businessMemberDao.signUp(businessMember);
+    }
 	
 	public boolean checkUsernameDuplicate(String username) {
 		int count = employerDao.checkUsernameDuplicate(username);
