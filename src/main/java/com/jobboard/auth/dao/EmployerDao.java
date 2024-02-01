@@ -40,7 +40,7 @@ public class EmployerDao implements MemberDao<Employer>{
 		}
 	}
 	
-	@Override
+	@Deprecated
 	public int signUp(Map<String, Object> params) {
 		SqlSession sqlSession = null;
 		try {
@@ -54,6 +54,12 @@ public class EmployerDao implements MemberDao<Employer>{
 			sqlSession.close();
 		}
 		return -1;
+	}
+
+	@Deprecated
+	@Override
+	public boolean signUp(Employer param) {
+		throw new UnsupportedOperationException("Unimplemented method 'signUp'");
 	}
 	
 	@Override

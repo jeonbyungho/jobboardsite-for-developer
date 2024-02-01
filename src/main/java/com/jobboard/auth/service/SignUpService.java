@@ -21,7 +21,7 @@ public class SignUpService {
 	private final EmployerDao employerDao = EmployerDao.getInstance();
 	private final BusinessMemberDao businessMemberDao = BusinessMemberDao.getInstance();
 	
-	public int signUp(BusinessMember businessMember) {
+	public boolean signUp(BusinessMember businessMember) {
         return businessMemberDao.signUp(businessMember);
     }
 	

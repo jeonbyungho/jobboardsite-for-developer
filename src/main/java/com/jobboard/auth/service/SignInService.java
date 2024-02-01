@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import com.jobboard.auth.dao.EmployerDao;
-import com.jobboard.auth.model.Employer;
+import com.jobboard.auth.dao.BusinessMemberDao;
+import com.jobboard.auth.model.BusinessMember;
 import com.jobboard.web.model.ResultMessage;
 
 import lombok.AccessLevel;
@@ -21,18 +21,19 @@ public class SignInService {
 		}
 		return instance;
 	}
+
+	private final BusinessMemberDao bizMemberDao = BusinessMemberDao.getInstance();
 	
-	private final EmployerDao employerDao = EmployerDao.getInstance();
-	
-	public ResultMessage<Employer> signIn(String username, String password){
-		Optional<Employer> opt = employerDao.signIn(username, password);
+	public ResultMessage<BusinessMember> signIn(String username, String password){
+		Optional<BusinessMember> opt = bizMemberDao.signIn(username, password);
 		Map<String, Object> msg = new HashMap<>();
 		
-		msg.put("success", opt.isPresent());
-		if(opt.isEmpty()) {
+		boolean isValue = opt.isPresent();
+		msg.put("success", isValue);
+		if(!isValue) {
 			msg.put("error", "아이디(로그인 전용 아이디) 또는 비밀번호를 잘못 입력했습니다.");
 		}
 		
-		return new ResultMessage<Employer>(opt.orElse(null), msg);
+		return new ResultMessage<BusinessMember>(opt.orElse(null), msg);
 	}
 }

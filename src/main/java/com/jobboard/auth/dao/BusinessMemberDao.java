@@ -1,5 +1,9 @@
 package com.jobboard.auth.dao;
 
+import java.util.Optional;
+import java.util.Map;
+import java.util.HashMap;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -10,7 +14,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class BusinessMemberDao {
+public class BusinessMemberDao implements MemberDao<BusinessMember>{
 	private static BusinessMemberDao instance;
 	
 	public static BusinessMemberDao getInstance() {
@@ -23,24 +27,37 @@ public class BusinessMemberDao {
 	private final String NAMESPACE = "BusinessMemberMapper";
 	private final SqlSessionFactory sqlSessionFactory = MybatisSessionFactory.getInstance();
 	
-	public int signUp(BusinessMember businessMember) {
+	@Override
+	public boolean signUp(BusinessMember businessMember) {
         SqlSession sqlSession = null;
 		try {
 			sqlSession = sqlSessionFactory.openSession();
 			sqlSession.insert(NAMESPACE + ".signUp", businessMember);
 			sqlSession.commit();
-			return 1;
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			sqlSession.rollback();
 			sqlSession.close();
 		}
-        return -1;
+        return false;
     }
 	
-	public int checkUsernameDuplicate(String username) {
+	@Override
+	public Optional<BusinessMember> signIn(String username, String password) {
+		Map<String, String> params = new HashMap<>();
+		params.put("username", username);
+		params.put("password", password);
 		try(SqlSession sqlSession = sqlSessionFactory.openSession()){
-			return sqlSession.selectOne(NAMESPACE + ".countByUsername", username);
+			BusinessMember bizMember = sqlSession.selectOne(NAMESPACE + ".signIn", params);
+			return Optional.ofNullable(bizMember);
 		}
 	}
+
+	@Override
+	public int checkUsernameDuplicate(String username) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 }

@@ -31,7 +31,10 @@ CREATE TABLE business_member (
 COMMENT ON TABLE business_member IS '기업 회원';
 
 -- 회원 가입
-SELECT member_seq.nextval FROM dual;
+SELECT
+    member_seq.nextval
+FROM
+    dual;
 
 BEGIN
     INSERT INTO member (
@@ -56,3 +59,18 @@ BEGIN
         
     );
 END;
+
+-- 로그인
+SELECT
+    m.id,
+    m.username,
+    m.password,
+    m.email,
+    m.created_at,
+    biz.business_registration_number,
+    biz.company_name,
+    biz.ceo_name
+FROM
+    business_member biz
+    INNER JOIN member m
+    ON biz.member_id = m.id;
