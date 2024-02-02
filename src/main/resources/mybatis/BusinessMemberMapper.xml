@@ -62,5 +62,17 @@
             business_member biz
             INNER JOIN member m
             ON biz.member_id = m.id
+        WHERE
+            m.username = #{username} AND m.password = #{password}
+    </select>
+
+    <!-- 아이디 중복 확인 -->
+    <select id="countByUsername" parameterType="string" resultType="long">
+        SELECT
+            COUNT(*)
+        FROM
+            member m
+        WHERE
+            m.username = #{username}
     </select>
 </mapper>

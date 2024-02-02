@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import com.jobboard.auth.dao.BusinessMemberDao;
 import com.jobboard.auth.model.BusinessMember;
+import com.jobboard.web.PasswordEncryptionUtil;
 import com.jobboard.web.model.ResultMessage;
 
 import lombok.AccessLevel;
@@ -25,7 +26,8 @@ public class SignInService {
 	private final BusinessMemberDao bizMemberDao = BusinessMemberDao.getInstance();
 	
 	public ResultMessage<BusinessMember> signIn(String username, String password){
-		Optional<BusinessMember> opt = bizMemberDao.signIn(username, password);
+		PasswordEncryptionUtil pwEncrypt = PasswordEncryptionUtil.getInstance();
+		Optional<BusinessMember> opt = bizMemberDao.signIn(username, pwEncrypt.encrypt(password));
 		Map<String, Object> msg = new HashMap<>();
 		
 		boolean isValue = opt.isPresent();

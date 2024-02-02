@@ -1,8 +1,9 @@
 package com.jobboard.auth.service;
 
 import com.jobboard.auth.dao.BusinessMemberDao;
-import com.jobboard.auth.dao.EmployerDao;
 import com.jobboard.auth.model.BusinessMember;
+import com.jobboard.auth.model.Member;
+import com.jobboard.web.PasswordEncryptionUtil;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -17,16 +18,18 @@ public class SignUpService {
 		}
 		return instance;
 	}
-	
-	private final EmployerDao employerDao = EmployerDao.getInstance();
-	private final BusinessMemberDao businessMemberDao = BusinessMemberDao.getInstance();
-	
+
+	private final BusinessMemberDao bizMemberDao = BusinessMemberDao.getInstance();
+
 	public boolean signUp(BusinessMember businessMember) {
-        return businessMemberDao.signUp(businessMember);
+		PasswordEncryptionUtil pwEncrypt = PasswordEncryptionUtil.getInstance();
+		Member member = businessMember.getMember();
+		member.setPassword(pwEncrypt.encrypt(member.getPassword()));
+
+        return bizMemberDao.signUp(businessMember);
     }
 	
-	public boolean checkUsernameDuplicate(String username) {
-		int count = employerDao.checkUsernameDuplicate(username);
-		return count > 0;
+	public boolean checkDuplicateUsername(String username) {
+		return 0 < bizMemberDao.checkDuplicateUsername(username);
 	}
 }

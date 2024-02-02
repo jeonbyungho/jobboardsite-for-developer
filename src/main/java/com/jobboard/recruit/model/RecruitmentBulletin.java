@@ -3,8 +3,6 @@ package com.jobboard.recruit.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.jobboard.auth.model.Employer;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -12,7 +10,6 @@ import lombok.ToString;
 @Getter @Setter @ToString
 public class RecruitmentBulletin {
 	private long id;
-	private Employer employer;
 	
 	private String title;
 	private List<RecruitmentJob> jobs;

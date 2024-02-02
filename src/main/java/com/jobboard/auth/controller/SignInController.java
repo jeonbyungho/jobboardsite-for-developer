@@ -32,7 +32,6 @@ public class SignInController extends ControllerImpl{
 		
 		HttpSession session = req.getSession();
 		session.setAttribute("member", rs.getValue());
-		System.out.println(rs.getValue().toString());
 		httUtil.responseJson(resp, rs.getMessage());
 	}
 }

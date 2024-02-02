@@ -55,9 +55,10 @@ public class BusinessMemberDao implements MemberDao<BusinessMember>{
 	}
 
 	@Override
-	public int checkUsernameDuplicate(String username) {
-		// TODO Auto-generated method stub
-		return 0;
+	public long checkDuplicateUsername(String username) {
+		try(SqlSession sqlSession = sqlSessionFactory.openSession()){
+			return sqlSession.selectOne(NAMESPACE + ".countByUsername", username);
+		}
 	}
 	
 }

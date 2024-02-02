@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.jobboard.web.controller.ControllerImpl;
 import com.jobboard.web.controller.HttpUtil;
 
-public class SimpleContoller extends ControllerImpl{
+public class SimpleController extends ControllerImpl{
 	private final String viewPath;
 	private final HttpUtil httUtil = HttpUtil.getInstance();
 	
-	public SimpleContoller(String viewPath) {
+	public SimpleController(String viewPath) {
 		this.viewPath = viewPath;
 	}
 	
