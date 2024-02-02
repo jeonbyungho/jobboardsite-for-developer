@@ -15,15 +15,8 @@
   </properties>
 
   <build>
-    <plugins>	
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <release>11</release>
-        </configuration>
-      </plugin>
-      
+	<finalName>jobboard</finalName>
+    <plugins>
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
         <version>3.3.2</version>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="JobBoardMapper">
+    <resultMap id="jobBoardResult" type="JobBoard">
+        <id property="id" column="id" javaType="long"/>
+        <result property="title"        column="title"/>
+        <result property="content"      column="content"/>
+        <result property="createdAt"    column="created_at"     typeHandler="org.apache.ibatis.type.LocalDateTimeTypeHandler"/>
+        <result property="modifiedAt"   column="modified_at"    typeHandler="org.apache.ibatis.type.LocalDateTimeTypeHandler"/>
+        <association property="employer" column="business_member_id" javaType="BusinessMember" resultMap="BusinessMemberMapper.bizMemberResult"/>
+    </resultMap>
+
+    <!-- 조회 -->
+    <select id="findById" parameterType="long" resultMap="jobBoardResult">
+        SELECT
+            *
+        FROM
+            jobboard j
+            INNER JOIN business_member biz
+                ON j.business_member_id = biz.member_id
+            INNER JOIN member mb
+                ON biz.member_id = mb.id
+        WHERE
+            j.id = #{id}
+    </select>
+
+    <!-- 작성 -->
+    <insert id="save" parameterType="JobBoard">
+        INSERT INTO jobboard j(
+            j.id,
+            j.business_member_id,
+            j.title,
+            j.content
+        ) VALUES (
+            jobboard_seq.nextval,
+            #{employer.id},
+            #{title},
+            #{content}
+        )
+    </insert>
+</mapper>

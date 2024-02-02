@@ -57,7 +57,7 @@ public class BusinessMemberDao implements MemberDao<BusinessMember>{
 	@Override
 	public long checkDuplicateUsername(String username) {
 		try(SqlSession sqlSession = sqlSessionFactory.openSession()){
-			return sqlSession.selectOne(NAMESPACE + ".countByUsername", username);
+			return sqlSession.selectOne("MemberMapper" + ".countByUsername", username);
 		}
 	}
 	

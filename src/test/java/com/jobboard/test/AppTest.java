@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import com.jobboard.auth.dao.BusinessMemberDao;
 import com.jobboard.auth.service.SignUpService;
+import com.jobboard.dto.recruit.JobBoard;
+import com.jobboard.recruit.dao.JobBoardDao;
 
 
 public class AppTest {
@@ -20,5 +22,11 @@ public class AppTest {
 		SignUpService sv = SignUpService.getInstance();
 		boolean bl = sv.checkDuplicateUsername("test3");
 		System.out.println(bl);
+	}
+
+	@Test
+	public void jobboardDao(){
+		JobBoardDao dao = JobBoardDao.getInstance();
+		dao.findById(1l).ifPresent(jb -> System.out.println(jb.toString()));
 	}
 }
