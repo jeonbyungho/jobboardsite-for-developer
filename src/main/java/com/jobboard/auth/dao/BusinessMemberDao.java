@@ -24,7 +24,7 @@ public class BusinessMemberDao implements MemberDao<BusinessMember>{
 		return instance;
 	}
 	
-	private final String NAMESPACE = "BusinessMemberMapper";
+	private final String NAMESPACE = "member.Business";
 	private final SqlSessionFactory sqlSessionFactory = MybatisSessionFactory.getInstance();
 	
 	@Override
@@ -57,7 +57,7 @@ public class BusinessMemberDao implements MemberDao<BusinessMember>{
 	@Override
 	public long checkDuplicateUsername(String username) {
 		try(SqlSession sqlSession = sqlSessionFactory.openSession()){
-			return sqlSession.selectOne("MemberMapper" + ".countByUsername", username);
+			return sqlSession.selectOne("member.Member" + ".countByUsername", username);
 		}
 	}
 	

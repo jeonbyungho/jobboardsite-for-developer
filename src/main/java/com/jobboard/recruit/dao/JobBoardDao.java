@@ -22,7 +22,7 @@ public class JobBoardDao {
 		return instance;
 	}
 
-    private final String NAMESPACE = "JobBoardMapper";
+    private final String NAMESPACE = "recruit.JobBoard";
     private final SqlSessionFactory sqlSessionFactory = MybatisSessionFactory.getInstance();
 
     public Optional<JobBoard> findById(Long pk){
