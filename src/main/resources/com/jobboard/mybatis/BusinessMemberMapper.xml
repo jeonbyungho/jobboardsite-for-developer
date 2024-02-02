@@ -41,7 +41,7 @@
             ) VALUES (
                 #{member.id},
                 #{bizRegistrationNo},
-                1,
+                #{companyType, typeHandler=com.jobboard.mybatis.typehandler.CompanyTypeHandler},
                 #{companyName},
                 #{ceoName}
             );

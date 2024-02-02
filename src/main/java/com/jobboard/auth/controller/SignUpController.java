@@ -59,7 +59,7 @@ public class SignUpController extends ControllerImpl {
 		businessMember.setMember(member);
 		businessMember.setCeoName(ceoName);
 		boolean result = signUpService.signUp(businessMember);
-
+		
 		Map<String, Object> json = new HashMap<>();
 		json.put("result", result);
 		json.put("profile", businessMember.toString());
