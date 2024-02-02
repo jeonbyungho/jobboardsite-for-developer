@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.jobboard.auth.dto.BusinessMemberDTO;
 import com.jobboard.auth.service.SignInService;
+import com.jobboard.dto.ResultMessage;
+import com.jobboard.dto.member.BusinessMember;
 import com.jobboard.web.controller.ControllerImpl;
 import com.jobboard.web.controller.HttpUtil;
-import com.jobboard.web.dto.ResultMessage;
 
 public class SignInController extends ControllerImpl{
 	private final String viewPath = "auth/signIn";
@@ -28,7 +28,7 @@ public class SignInController extends ControllerImpl{
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		
-		ResultMessage<BusinessMemberDTO> rs = signInService.signIn(username, password);
+		ResultMessage<BusinessMember> rs = signInService.signIn(username, password);
 		
 		HttpSession session = req.getSession();
 		session.setAttribute("member", rs.getValue());

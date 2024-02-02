@@ -8,9 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jobboard.auth.dto.BusinessMemberDTO;
-import com.jobboard.auth.dto.MemberDTO;
 import com.jobboard.auth.service.SignUpService;
+import com.jobboard.dto.member.BusinessMember;
+import com.jobboard.dto.member.Member;
 import com.jobboard.web.WebURLPattern;
 import com.jobboard.web.controller.ControllerImpl;
 import com.jobboard.web.controller.HttpUtil;
@@ -52,8 +52,8 @@ public class SignUpController extends ControllerImpl {
 		String companyName = req.getParameter("companyName");
 		String ceoName = req.getParameter("ceoName");
 		
-		MemberDTO member = new MemberDTO(username, password, email);
-		BusinessMemberDTO businessMember = new BusinessMemberDTO();
+		Member member = new Member(username, password, email);
+		BusinessMember businessMember = new BusinessMember();
 		businessMember.setCompanyName(companyName);
 		businessMember.applyCompanyType(companyType);
 		businessMember.setMember(member);

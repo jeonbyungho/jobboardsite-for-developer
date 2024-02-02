@@ -1,12 +1,12 @@
-package com.jobboard.auth.dto;
+package com.jobboard.dto.member;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter @Setter @ToString
-public class IndividualMemberDTO {
-    private MemberDTO member;
+public class IndividualMember {
+    private Member member;
     private String name;
     private String phone;
 }

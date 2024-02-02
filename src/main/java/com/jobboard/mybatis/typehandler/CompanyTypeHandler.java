@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.TypeHandler;
 
-import com.jobboard.auth.dto.CompanyType;
+import com.jobboard.dto.enums.CompanyType;
 
 public class CompanyTypeHandler implements TypeHandler<CompanyType>{
 

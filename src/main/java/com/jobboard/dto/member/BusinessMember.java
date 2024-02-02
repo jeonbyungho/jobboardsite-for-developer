@@ -1,12 +1,14 @@
-package com.jobboard.auth.dto;
+package com.jobboard.dto.member;
+
+import com.jobboard.dto.enums.CompanyType;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter @Setter @ToString
-public class BusinessMemberDTO {
-    private MemberDTO member;
+public class BusinessMember {
+    private Member member;
     private CompanyType companyType;
     private int bizRegistrationNo;
     private String companyName;

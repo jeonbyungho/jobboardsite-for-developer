@@ -1,8 +1,8 @@
 package com.jobboard.auth.service;
 
 import com.jobboard.auth.dao.BusinessMemberDao;
-import com.jobboard.auth.dto.BusinessMemberDTO;
-import com.jobboard.auth.dto.MemberDTO;
+import com.jobboard.dto.member.BusinessMember;
+import com.jobboard.dto.member.Member;
 import com.jobboard.web.PasswordEncryptionUtil;
 
 import lombok.AccessLevel;
@@ -21,9 +21,9 @@ public class SignUpService {
 
 	private final BusinessMemberDao bizMemberDao = BusinessMemberDao.getInstance();
 
-	public boolean signUp(BusinessMemberDTO businessMember) {
+	public boolean signUp(BusinessMember businessMember) {
 		PasswordEncryptionUtil pwEncrypt = PasswordEncryptionUtil.getInstance();
-		MemberDTO member = businessMember.getMember();
+		Member member = businessMember.getMember();
 		member.setPassword(pwEncrypt.encrypt(member.getPassword()));
 
         return bizMemberDao.signUp(businessMember);

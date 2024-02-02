@@ -1,4 +1,4 @@
-package com.jobboard.web.dto;
+package com.jobboard.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

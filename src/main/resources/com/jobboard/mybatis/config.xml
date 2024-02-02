@@ -3,11 +3,11 @@
 <configuration>
 	
 	<typeAliases>
-		<typeAlias alias="Member" type="com.jobboard.auth.dto.MemberDTO"/>
-		<typeAlias alias="BusinessMember" type="com.jobboard.auth.dto.BusinessMemberDTO"/>
-		<typeAlias alias="CompanyType" type="com.jobboard.auth.dto.CompanyType"/>
+		<typeAlias alias="Member" type="com.jobboard.dto.member.Member"/>
+		<typeAlias alias="BusinessMember" type="com.jobboard.dto.member.BusinessMember"/>
+		<typeAlias alias="CompanyType" type="com.jobboard.dto.enums.CompanyType"/>
 		<typeAlias alias="RecruitmentBulletin" type="com.jobboard.recruit.dto.RecruitmentBulletin"/>
-		<typeAlias alias="Pagination" type="com.jobboard.web.dto.Pagination"/>
+		<typeAlias alias="Pagination" type="com.jobboard.dto.Pagination"/>
 	</typeAliases>
 
 	<typeHandlers>

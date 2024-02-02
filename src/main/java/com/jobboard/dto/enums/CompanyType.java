@@ -1,4 +1,4 @@
-package com.jobboard.auth.dto;
+package com.jobboard.dto.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

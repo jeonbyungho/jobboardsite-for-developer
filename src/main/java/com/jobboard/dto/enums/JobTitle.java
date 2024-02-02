@@ -1,11 +1,11 @@
-package com.jobboard.recruit.dto;
+package com.jobboard.dto.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
 @Getter @AllArgsConstructor @ToString
-public enum RecruitmentJob {
+public enum JobTitle {
 		BACK_END ("백엔드")
 	,	FRONT_END ("프론트 엔드")
 	,	FULL_STACK ("풀스택")
