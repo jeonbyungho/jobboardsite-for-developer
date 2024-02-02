@@ -1,4 +1,4 @@
-package com.jobboard.recruit.model;
+package com.jobboard.recruit.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.jobboard.recruit.model;
+package com.jobboard.recruit.dto;
 
 import java.time.LocalDateTime;
 import java.util.List;

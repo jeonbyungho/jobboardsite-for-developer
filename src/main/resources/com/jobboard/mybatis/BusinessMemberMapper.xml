@@ -5,6 +5,7 @@
         <result column="business_registration_number" property="bizRegistrationNo"/>
         <result column="company_name" property="companyName"/>
         <result column="ceo_name" property="ceoName"/>
+        <result column="company_type" property="companyType" javaType="CompanyType" typeHandler="com.jobboard.mybatis.typehandler.CompanyTypeHandler"/>
         <association column="id" property="member" javaType="Member">
             <id column="id" property="id"/>
             <result column="username" 	property="username"/>
@@ -56,6 +57,7 @@
             m.email,
             m.created_at,
             biz.business_registration_number,
+            biz.company_type,
             biz.company_name,
             biz.ceo_name
         FROM

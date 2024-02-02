@@ -1,4 +1,4 @@
-package com.jobboard.web.dao;
+package com.jobboard.mybatis;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,7 +17,7 @@ public class MybatisSessionFactory {
 	
 	public static SqlSessionFactory getInstance() {
 		if(instance == null) {
-			String resource = "mybatis/config.xml";
+			String resource = "com/jobboard/mybatis/config.xml";
 			try (InputStream inputStream = Resources.getResourceAsStream(resource)) {
 				instance = new SqlSessionFactoryBuilder().build(inputStream);
 			} catch (IOException e) {

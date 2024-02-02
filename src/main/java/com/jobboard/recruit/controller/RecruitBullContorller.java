@@ -6,11 +6,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jobboard.recruit.model.RecruitmentBulletin;
+import com.jobboard.recruit.dto.RecruitmentBulletin;
 import com.jobboard.recruit.service.RecruitBullService;
 import com.jobboard.web.controller.ControllerImpl;
 import com.jobboard.web.controller.HttpUtil;
-import com.jobboard.web.model.ResultPage;
+import com.jobboard.web.dto.ResultPage;
 
 import lombok.extern.slf4j.Slf4j;
 

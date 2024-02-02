@@ -10,9 +10,9 @@ import java.util.Optional;
 import org.apache.ibatis.exceptions.PersistenceException;
 
 import com.jobboard.recruit.dao.RecruitBullDao;
-import com.jobboard.recruit.model.RecruitmentBulletin;
-import com.jobboard.web.model.Pagination;
-import com.jobboard.web.model.ResultPage;
+import com.jobboard.recruit.dto.RecruitmentBulletin;
+import com.jobboard.web.dto.Pagination;
+import com.jobboard.web.dto.ResultPage;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

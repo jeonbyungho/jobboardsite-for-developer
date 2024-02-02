@@ -15,7 +15,7 @@ import javax.servlet.http.Part;
 
 import org.json.simple.JSONObject;
 
-import com.jobboard.recruit.model.RecruitmentBulletin;
+import com.jobboard.recruit.dto.RecruitmentBulletin;
 import com.jobboard.recruit.service.RecruitBullService;
 import com.jobboard.web.WebURLPattern;
 import com.jobboard.web.controller.ControllerImpl;

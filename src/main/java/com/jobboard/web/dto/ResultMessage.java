@@ -1,4 +1,4 @@
-package com.jobboard.web.model;
+package com.jobboard.web.dto;
 
 import java.util.Map;
 

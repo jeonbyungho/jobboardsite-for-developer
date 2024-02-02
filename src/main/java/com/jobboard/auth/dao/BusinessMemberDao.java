@@ -7,14 +7,14 @@ import java.util.HashMap;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.jobboard.auth.model.BusinessMember;
-import com.jobboard.web.dao.MybatisSessionFactory;
+import com.jobboard.auth.dto.BusinessMemberDTO;
+import com.jobboard.mybatis.MybatisSessionFactory;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class BusinessMemberDao implements MemberDao<BusinessMember>{
+public class BusinessMemberDao implements MemberDao<BusinessMemberDTO>{
 	private static BusinessMemberDao instance;
 	
 	public static BusinessMemberDao getInstance() {
@@ -28,7 +28,7 @@ public class BusinessMemberDao implements MemberDao<BusinessMember>{
 	private final SqlSessionFactory sqlSessionFactory = MybatisSessionFactory.getInstance();
 	
 	@Override
-	public boolean signUp(BusinessMember businessMember) {
+	public boolean signUp(BusinessMemberDTO businessMember) {
         SqlSession sqlSession = null;
 		try {
 			sqlSession = sqlSessionFactory.openSession();
@@ -44,12 +44,12 @@ public class BusinessMemberDao implements MemberDao<BusinessMember>{
     }
 	
 	@Override
-	public Optional<BusinessMember> signIn(String username, String password) {
+	public Optional<BusinessMemberDTO> signIn(String username, String password) {
 		Map<String, String> params = new HashMap<>();
 		params.put("username", username);
 		params.put("password", password);
 		try(SqlSession sqlSession = sqlSessionFactory.openSession()){
-			BusinessMember bizMember = sqlSession.selectOne(NAMESPACE + ".signIn", params);
+			BusinessMemberDTO bizMember = sqlSession.selectOne(NAMESPACE + ".signIn", params);
 			return Optional.ofNullable(bizMember);
 		}
 	}
